@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="dashboard_style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        body {
+            background-color: #FFF9E4;
+        }
+        .checkout-container {
+            max-width: 700px;
+            margin: 50px auto;
+            background-color: #FFF3CD;
+            position: absolute;
+            top:30px;
+            margin-left:300px;
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+        h4{
+            color: rgb(255, 178, 53);
+        }
+        .checkout-container h5, .checkout-container p, .checkout-container label {
+            font-weight: bold;
+        }
+        .product-name {
+            color: #E58600;
+            font-weight: bold;
+        }
+        .total-price {
+            color: #E58600;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .payment-option {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .payment-option label {
+            margin-left: 10px;
+            font-weight: normal;
+            font-size: 0.9em;
+        }
+        .place-order-btn {
+            width: 100%;
+            border: 1px solid #E58600;
+            color: #E58600;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: transparent;
+            cursor: pointer;
+        }
+        .place-order-btn:hover {
+            background-color: #E58600;
+            color: white;
+        }
+        .option-description {
+            color: #6c757d;
+            font-size: 0.85em;
+            margin-top: 5px;
+        }
+        @media (max-width: 430px) {
+            .sidebar {
+                display: none;
+            }
+            .top_navbar {
+                height: 60px;
+                font-size: 1.1em;
+            }
+            .container, .checkout-container, .profile-container {
+                width: 100%;
+                padding: 15px;
+                margin: 0;
+            }
+            .product-card img, .profile-picture, .modal-content img {
+                width: 100%;
+                height: auto;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                font-size: 1.3em;
+            }
+            p, span, button, input, textarea {
+                font-size: 1em;
+            }
+            .table-container {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="top_navbar">
+            <div class="logo">
+                <div class="menu">
+                    <div class="profile">
+                        <button>LOGO</button>
+                        <span id="user">R</span>
+                        <div class="name-description">
+                            <span>Rakan</span>
+                            <span>Description</span>
+                        </div>
+                        <span class="menu"> ----------</span>
+                        <span class="menu"> ---------- </span>
+                        <span class="menu"> ---------- </span>
+                        <span class="menu"> ---------- </span>
+                        <span class="icon"><i class="fas fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="home.html">
+                        <span class="icon"><i class="fas fa-house"></i></span>
+                        <span class="text">HomePage</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="cart.html">
+                        <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+                        <span class="text">Shopping Cart</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="order.html">
+                        <span class="icon"><i class="fas fa-box-open"></i></span>
+                        <span class="text">Orders</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html">
+                        <span class="icon"><i class="fas fa-user"></i></span>
+                        <span class="text">Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="showModal(event)">
+                        <span class="icon"><i class="fas fa-comment-dots"></i></span>
+                        <span class="text">Complaints</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    <div class="modal" id="complaintModal">
+        <div class="modal-content">
+            <button onclick="closeModall()" style="float: right;">Close</button>
+            <h3>Submit Your Complaint</h3>
+                <form action="" method="post">
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <textarea name="message" placeholder="Your complaint message..." rows="5" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+        </div>
+     </div>
+    
+     <script>
+        function showModal(event) {
+            event.preventDefault();
+            document.getElementById('complaintModal').classList.add('active');
+        }
+    
+        function closeModall() {
+            document.getElementById('complaintModal').classList.remove('active');
+        }
+    </script>   
+
+<div class="container checkout-container">
+<h4>Shopping Cart > Checkout</h4>
+<br>
+    <div class="row">
+        <div class="col-8">
+            <h5>Product</h5>
+            <a href="#" class="product-name">LG Refrigerator</a> <span>x 1</span>
+            <p>Total</p>
+            <p>Subtotal</p>
+        </div>
+        <div class="col-4 text-right">
+            <h5>Subtotal</h5>
+            <p>Rs. 250,000.00</p>
+            <p>Rs. 250,000.00</p>
+            
+            <p class="total-price">Rs. 250,000.00</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="payment-option">
+        <input type="radio" name="payment" id="bankTransfer" checked>
+        <label for="bankTransfer">Direct Bank Transfer</label>
+    </div>
+    <p class="option-description">
+       xxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxx
+    </p>
+
+    <div class="payment-option">
+        <input type="radio" name="payment" id="cashDelivery">
+        <label for="cashDelivery">Cash On Delivery</label>
+    </div>
+    <p class="option-description">
+    xxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxx
+   </p>
+
+   <a href="cart.html"> <button class="place-order-btn mt-4">Place order</button></a>
+</div>
+<div class="bottom-navbar">
+    <a href="home.html" class="active">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+    </a>
+    <a href="cart.html">
+        <i class="fas fa-shopping-cart"></i>
+        <span>Cart</span>
+    </a>
+    <a href="order.html">
+        <i class="fas fa-box-open"></i>
+        <span>Orders</span>
+    </a>
+    <a href="profile.html">
+        <i class="fas fa-user"></i>
+        <span>Profile</span>
+    </a>
+    <a href="#" onclick="showModal(event)">
+        <i class="fas fa-comment-dots"></i>
+        <span>Complaints</span>
+    </a>
+</div>
+
+<script>
+    function showModal(event) {
+        event.preventDefault();
+        document.getElementById('complaintModal').classList.add('active');
+    }
+</script>
+
+</body>
+</html>

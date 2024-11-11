@@ -1,0 +1,112 @@
+/* Container for the search bar */
+.orders-search-container {
+  width: 95%;
+  max-width: 600px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* Styling for the search input */
+#searchInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background-color: #fdf1d5;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+h2 {
+  color: #f5a623;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.table-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table {
+  margin: 0;
+  background-color: white;
+}
+
+.table thead th {
+  background-color: rgb(255, 178, 53);
+  color: white;
+  font-weight: bold;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.table tbody td {
+  vertical-align: middle;
+}
+
+.status-shipping {
+  color: #9e9e9e;
+}
+
+.status-processing {
+  color: #ff9800;
+}
+
+.status-delivered {
+  color: #ffcc00;
+  font-weight: bold;
+}
+
+/* Responsive adjustments for iPhone 16 Pro (430px width) */
+@media (max-width: 430px) {
+  /* Hide the sidebar on mobile */
+  .sidebar {
+    display: none;
+  }
+
+  /* Adjust the top navbar height and font size */
+  .top_navbar {
+    height: 60px;
+    font-size: 1.1em;
+  }
+
+  /* Make container elements full width with mobile-friendly padding */
+  .container, .checkout-container, .profile-container {
+    width: 100%;
+    padding: 15px;
+    margin: 0;
+  }
+
+  /* Ensure images resize correctly for mobile */
+  .product-card img, .profile-picture, .modal-content img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Increase font sizes for readability on mobile */
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 1.3em;
+  }
+
+  /* Add horizontal scroll for tables if necessary */
+  .table-container {
+    overflow-x: auto;
+  }
+}

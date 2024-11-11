@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>specific_Category</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="dashboard_style.css">
+    <link rel="stylesheet" href="category_style.css">
+    <style> @media (max-width: 430px) {
+        .sidebar {
+            display: none;
+        }
+        .top_navbar {
+            height: 60px;
+            font-size: 1.1em;
+        }
+        .container, .checkout-container, .profile-container {
+            width: 100%;
+            padding: 15px;
+            margin: 0;
+        }
+        .product-card img, .profile-picture, .modal-content img {
+            width: 100%;
+            height: auto;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-size: 1.3em;
+        }
+        p, span, button, input, textarea {
+            font-size: 1em;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+    }</style>
+</head>
+<body>
+
+    <div>
+        <div class="top_navbar">
+            <div class="logo">
+                <div class="menu">
+                    <div class="profile">
+                        <button>LOGO</button>
+                        <span id="user">R</span>
+                        <div class="name-description">
+                            <span>Rakan</span>
+                            <span>Description</span>
+                        </div>
+                        <span class="menu"> ----------</span>
+                        <span class="menu"> ---------- </span>
+                        <span class="menu"> ---------- </span>
+                        <span class="menu"> ---------- </span>
+                        <span class="icon"><i class="fas fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <ul>
+                <li><a href="home.html"><span class="icon"><i class="fas fa-house"></i></span><span class="text">HomePage</span></a></li>
+                <li><a href="cart.html"><span class="icon"><i class="fas fa-shopping-cart"></i></span><span class="text">Shopping Cart</span></a></li>
+                <li><a href="order.html"><span class="icon"><i class="fas fa-box-open"></i></span><span class="text">Orders</span></a></li>
+                <li><a href="profile.html"><span class="icon"><i class="fas fa-user"></i></span><span class="text">Profile</span></a></li>
+                <li><a href="#" onclick="showModal(event)"><span class="icon"><i class="fas fa-comment-dots"></i></span><span class="text">Complaints</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="complaintModal">
+        <div class="modal-content">
+            <button onclick="closeModall()" style="float: right;">Close</button>
+            <h3>Submit Your Complaint</h3>
+            <form action="" method="post">
+                <input type="text" name="subject" placeholder="Subject" required>
+                <textarea name="message" placeholder="Your complaint message..." rows="5" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showModal(event) {
+            event.preventDefault();
+            document.getElementById('complaintModal').classList.add('active');
+        }
+
+        function closeModall() {
+            document.getElementById('complaintModal').classList.remove('active');
+        }
+    </script>
+
+    <div class="base">
+        <div class="container">
+            <div class="title-tabs">
+                <h1>Home Equipments</h1>
+                <br>
+                <h3 class="tabs">
+                    <a href="home.html">All</a>
+                    <a href="categories.html" style="text-decoration: underline;">Categories > Refrigerators > Large</a>
+                </h3>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="images/c1.png" alt="Product Image">
+                    <h4>name</h4>
+                    <p>xxxxxxxxxxxxxxxx</p>
+                    <p>Size: Medium</p>
+                    <p>Bought at: 2023-08-01</p>
+                    <h4>Price: $100</h4>
+                    <p>Max Size: Large</p>
+                    <a href="product.html"><button class="order-button">Order</button></a>
+                </div>
+
+                <div class="product-card">
+                    <img src="images/c2.png" alt="Product Image">
+                    <h4>name</h4>
+                    <p>xxxxxxxxxxxxxxxx</p>
+                    <p>Size: Medium</p>
+                    <p>Bought at: 2023-08-01</p>
+                    <h4>Price: $100</h4>
+                    <p>Max Size: Large</p>
+                    <a href="product.html"><button class="order-button">Order</button></a>
+                </div>
+
+                <div class="product-card">
+                    <img src="images/c6.png" alt="Product Image">
+                    <h4>name</h4>
+                    <p>xxxxxxxxxxxxxxxx</p>
+                    <p>Size: Medium</p>
+                    <p>Bought at: 2023-08-01</p>
+                    <h4>Price: $100</h4>
+                    <p>Max Size: Large</p>
+                    <a href="product.html"><button class="order-button">Order</button></a>
+                </div>
+
+                <div class="product-card">
+                    <img src="images/c7.png" alt="Product Image">
+                    <h4>name</h4>
+                    <p>xxxxxxxxxxxxxxxx</p>
+                    <p>Size: Medium</p>
+                    <p>Bought at: 2023-08-01</p>
+                    <h4>Price: $100</h4>
+                    <p>Max Size: Large</p>
+                    <a href="product.html"><button class="order-button">Order</button></a>
+                </div>
+
+                <div class="product-card">
+                    <img src="images/c8.png" alt="Product Image">
+                    <h4>name</h4>
+                    <p>xxxxxxxxxxxxxxxx</p>
+                    <p>Size: Medium</p>
+                    <p>Bought at: 2023-08-01</p>
+                    <h4>Price: $100</h4>
+                    <p>Max Size: Large</p>
+                    <a href="product.html"><button class="order-button">Order</button></a>
+                </div>
+
+                <div class="product-card">
+                    <img src="images/c9.png" alt="Product Image">
+                    <h4>name</h4>
+                    <p>xxxxxxxxxxxxxxxx</p>
+                    <h5>Size: Medium</h5>
+                    <h5>Bought at: 2023-08-01</h5>
+                    <h5>Price: $100</h5>
+                    <h5>Max Size: Large</h5>
+                    <a href="product.html"><button class="order-button">Order</button></a>
+                </div>
+
+                <div class="product-card">
+                    <img src="images/c10.png" alt="Product Image">
+                    <h4>name</h4>
+                    <p>xxxxxxxxxxxxxxxx</p>
+                    <p>Size: Medium</p>
+                    <p>Bought at: 2023-08-01</p>
+                    <h4>Price: $100</h4>
+                    <p>Max Size: Large</p>
+                    <a href="product.html"><button class="order-button">Order</button></a>
+                </div>
+
+                <div class="product-card">
+                    <img src="images/c2.png" alt="Product Image">
+                    <h4>name</h4>
+                    <p>xxxxxxxxxxxxxxxx</p>
+                    <p>Size: Medium</p>
+                    <p>Bought at: 2023-08-01</p>
+                    <h4>Price: $100</h4>
+                    <p>Max Size: Large</p>
+                    <a href="product.html"><button class="order-button">Order</button></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-sidebar">
+            <div class="filter-group">
+                <select>
+                    <option>BY Company</option>
+                    <option>Company 1</option>
+                    <option>Company 2</option>
+                    <option>Company 3</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <div class="price-range">
+                    <span>Price: $40 - $180</span>
+                    <span>Filter</span>
+                </div>
+                <input type="range" class="price-slider" min="0" max="1000" value="180">
+            </div>
+
+            <div class="btn-group">
+                <span>Overflow&nbsp;</span>
+                <label class="btn">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="btn-group">
+                <span>Underflow</span>
+                <label class="btn">
+                    <input type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-navbar">
+        <a href="home.html" class="active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="cart.html">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+        </a>
+        <a href="order.html">
+            <i class="fas fa-box-open"></i>
+            <span>Orders</span>
+        </a>
+        <a href="profile.html">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+        <a href="#" onclick="showModal(event)">
+            <i class="fas fa-comment-dots"></i>
+            <span>Complaints</span>
+        </a>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll(".bottom-navbar a");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", function() {
+            tabs.forEach(t => t.classList.remove("active"));
+            this.classList.add("active");
+        });
+    });
+});
+
+        function showModal(event) {
+            event.preventDefault();
+            document.getElementById('complaintModal').classList.add('active');
+        }
+    </script>
+    
+</body>
+</html>
