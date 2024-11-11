@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Product</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="product.css" />
+    <script type="module" src="product.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <div class="logo">
+                    <i class="fas fa-cube"></i>
+                    <h1>Products</h1>
+                </div>
+            </div>
+       
+            <div class="header-right">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="notifications">
+                    <i class="fas fa-bell"></i>
+                    <div class="notification-board">
+                        <h3>Notifications</h3>
+                        <div class="notification-content">
+                            <!-- Notifications will be added here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-container">
+                    <div class="profile">
+                        <input type="file" id="profile-upload" accept="image/*" style="display: none;">
+                        <img id="profile-img" src="https://via.placeholder.com/40" alt="Profile">
+                    </div>
+                    <div class="profile-board">
+                        <h3>Profile</h3>
+                        <div class="profile-content">
+                            <!-- Profile content will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Container -->
+        <div class="content-container">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <span>MENU</span>
+                </div>
+                <div class="sidebar-items">
+                    <a href="../HomePage/Home.html" class="sidebar-item">
+                        <i class="fas fa-home"></i>
+                        <span>Homepage</span>
+                    </a>
+                    <a href="../OrderPage/order.html" class="sidebar-item">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Orders</span>
+                    </a>
+                    <a href="product.html" class="sidebar-item active">
+                        <i class="fas fa-box"></i>
+                        <span>Products</span>
+                    </a>
+                    <a href="../EmployeePage/employee.html" class="sidebar-item">
+                        <i class="fas fa-users"></i>
+                        <span>Employee</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <div class="product-container">
+                    <!-- Page Header with Tabs -->
+                    <div class="page-header">
+                        <h2>Product Management</h2>
+                        <div class="tabs">
+                            <a href="#" class="tab active" data-tab="all">All Products</a>
+                            <a href="#" class="tab" data-tab="returned">Returned</a>
+                        </div>
+                    </div>
+
+                    <!-- Tab Content -->
+                    <div class="tab-content">
+                        <!-- All Products Tab -->
+                        <div id="all-products" class="tab-pane active">
+                            <!-- Products will be loaded here by JavaScript -->
+                        </div>
+
+                        <!-- Returned Products Tab -->
+                        <div id="returned-products" class="tab-pane">
+                            <!-- Returned products will be loaded here by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
