@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="dashboard_style.css">
+    <link rel="stylesheet" href="category_style.css">
+    <style>
+        .container {
+            margin-top: 300px;
+            margin-left: 17%;
+            background: white;
+        }
+        .inner_container {
+            margin: 0px 10px;
+            padding: 10px;
+            box-shadow: 0 4px 10px rgb(173, 173, 172);
+        }
+        .section {
+            margin: 10px 10px;
+            padding: 3%;
+            display: flex;
+        }
+        .name {
+            color: rgb(255, 178, 53);
+            margin: 0px 10px;
+            display: block;
+            font-size: 15px;
+            padding: 5px 10px;
+        }
+        .rev {
+            margin: 0 2px;
+            background-color: black;
+            color: white;
+            font-size: 15px;
+            width: 4%;
+            height: 6%;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+        p {
+            display: block;
+            margin: 0 50px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="top_navbar">
+            <div class="logo">
+                <div class="menu">
+                    <div class="profile">
+                        <button>LOGO</button>
+                        <span id="user">R</span>
+                        <div class="name-description">
+                            <span>Rakan</span>
+                            <span>Description</span>
+                        </div>
+                        <span class="menu"> ----------</span>
+                        <span class="menu"> ---------- </span>
+                        <span class="menu"> ---------- </span>
+                        <span class="menu"> ---------- </span>
+                        <span class="icon"><i class="fas fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="home.html">
+                        <span class="icon"><i class="fas fa-house"></i></span>
+                        <span class="text">HomePage</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="cart.html">
+                        <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+                        <span class="text">Shopping Cart</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="order.html">
+                        <span class="icon"><i class="fas fa-box-open"></i></span>
+                        <span class="text">Orders</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html">
+                        <span class="icon"><i class="fas fa-user"></i></span>
+                        <span class="text">Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="showModal(event)">
+                        <span class="icon"><i class="fas fa-comment-dots"></i></span>
+                        <span class="text">Complaints</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="modal" id="complaintModal">
+            <div class="modal-content">
+                <button onclick="closeModal()" style="float: right;">Close</button>
+                <h3>Submit Your Complaint</h3>
+                <form action="" method="post">
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <textarea name="message" placeholder="Your complaint message..." rows="5" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <script>
+            function showModal(event) {
+                event.preventDefault();
+                document.getElementById('complaintModal').classList.add('active');
+            }
+
+            function closeModal() {
+                document.getElementById('complaintModal').classList.remove('active');
+            }
+        </script>
+        <div class="container">
+            <div class="title-tabs">
+                <h1>Home Equipments</h1>
+                <br>
+                <h3 class="tabs">
+                    <a href="#">All</a>
+                    <a href="categories.html" style="text-decoration: underline;">Categories > Refrigerators > Large</a>
+                    <button type="button"onclick="showModall(event)" style="margin-left:400px; color:white; font-size:15px; background: rgb(255, 178, 53); border-radius:20px; padding:10px 20px;width:150px; border:none" data-bs-toggle="modal" data-bs-target="#review_modal">Show reviews</button>
+                </h3>
+            </div>
+            <div class="inner_container">
+                <div class="section">
+                    <div class="rev"> R</div>
+                    <span class="name">ghjghjghjgjhgj</span><br>
+                </div>
+                <p>ghjghjgjgjhgjhghjhhhhhhhhhhhhhhhhh ghjghjgjgjhgjhghjhhhhhhhhhhhhhhhhh
+                    ghjghjgjgjhgjhghjhhhhhhhhhhhhhhhhh
+                    ghjghjgjgjhgjhghjhhhhhhhhhhhhhhhhh
+                </p>
+            </div>
+            <div class="inner_container">
+                <div class="section">
+                    <div class="rev"> R</div>
+                    <span class="name">ghjghjghjgjhgj</span><br>
+                </div>
+                <p>ghjghjgjgjhgjhghjhhhhhhhhhhhhhhhhh ghjghjgjgjhgjhghjhhhhhhhhhhhhhhhhh
+                    ghjghjgjgjhgjhghjhhhhhhhhhhhhhhhhh
+                    ghjghjgjgjhgjhghjhhhhhhhhhhhhhhhhh
+                </p>
+            </div>
+            <div class="inner_container">
+                <div class="section">
+                    <div class="rev"> R</div>
+                    <span class="name">ghjghjghjgjhgj</span><br>
+                </div>
+                <p>ghjghjgjgjhgjhghjhhhhhhhhhhhhhhhhh ghjghjgjgjhgjhghjhhhhhhhhhhhhhhhhh
+                    ghjghjgjgjhgjhghjhhhhhhhhhhhhhhhhh
+                    ghjghjgjgjhgjhghjhhhhhhhhhhhhhhhhh
+                </p>
+            </div>
+            <div class="inner_container">
+                <div class="section">
+                    <div class="rev"> R</div>
+                    <span class="name">ghjghjghjgjhgj</span><br>
+                </div>
+                <p>ghjghjgjgjhgjhghjhhhhhhhhhhhhhhhhh ghjghjgjgjhgjhghjhhhhhhhhhhhhhhhhh
+                    ghjghjgjgjhgjhghjhhhhhhhhhhhhhhhhh
+                    ghjghjgjgjhgjhghjhhhhhhhhhhhhhhhhh
+                </p>
+            </div>
+        </div>
+        <div class="modal" id="reviewModal">
+            <div class="modal-content">
+                <button onclick="closeModall()" style="float: right;">Close</button>
+                <h3>Submit Your review</h3>
+                <form action="" method="post">
+                    <textarea name="message" placeholder="Your review ..." rows="5" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+        <script>
+            function showModall(event) {
+                event.preventDefault();
+                document.getElementById('reviewModal').classList.add('active');
+            }
+
+            function closeModall() {
+                document.getElementById('reviewModal').classList.remove('active');
+            }
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    </div>
+</body>
+</html>

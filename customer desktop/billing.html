@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form</title>
+  <link rel="stylesheet" href="dashboard_style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+  <style>
+    body {
+      background-color: #fdf1d5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+     
+      font-size: 12px; 
+    }
+    .form-container {
+        position: absolute;
+            top:70px;
+           
+      background-color: #fff2cc;
+      padding: 20px; 
+      border-radius: 8px;
+      max-width: 600px; 
+      width: 100%;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .form-group {
+      margin-bottom: 3px; 
+    }
+    .form-row .form-group {
+      margin-bottom: 3px;
+    }
+    .form-label {
+      font-size: 10px; 
+      margin-bottom: 1px;
+      display: block;
+    }
+    .form-control {
+      font-size: 11px; 
+      padding: 3px; 
+    }
+    .btn-submit {
+      background-color: #ffcc00;
+      color: #fff;
+      border: none;
+      width: 100%;
+      padding: 4px; 
+      font-size: 11px; 
+      font-weight: bold;
+    }
+    .btn-submit:hover {
+      background-color: #e6b800;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-container">
+    <div>
+        <div class="top_navbar">
+            <div class="logo">
+                <div class="menu">
+                    <div class="profile">
+                        <button>LOGO</button>
+                        <span id="user">R</span>
+                        <div class="name-description">
+                            <span>Rakan</span>
+                            <span>Description</span>
+                        </div>
+                        <span class="menu"> ----------</span>
+                        <span class="menu"> ---------- </span>
+                        <span class="menu"> ---------- </span>
+                        <span class="menu"> ---------- </span>
+                        <span class="icon"><i class="fas fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="sidebar">
+          <ul>
+            <li>
+                <a href="home.html">
+                    <span class="icon"><i class="fas fa-house"></i></span>
+                    <span class="text">HomePage</span>
+                </a>
+            </li>
+            <li>
+                <a href="cart.html">
+                    <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+                    <span class="text">Shopping Cart</span>
+                </a>
+            </li>
+            <li>
+                <a href="order.html">
+                    <span class="icon"><i class="fas fa-box-open"></i></span>
+                    <span class="text">Orders</span>
+                </a>
+            </li>
+            <li>
+                <a href="profile.html">
+                    <span class="icon"><i class="fas fa-user"></i></span>
+                    <span class="text">Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="showModal(event)">
+                    <span class="icon"><i class="fas fa-comment-dots"></i></span>
+                    <span class="text">Complaints</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+    
+    
+    <div class="modal" id="complaintModal">
+      <div class="modal-content">
+        <button onclick="closeModall()" style="float: right;">Close</button>
+        <h3>Submit Your Complaint</h3>
+                <form action="" method="post">
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <textarea name="message" placeholder="Your complaint message..." rows="5" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+        </div>
+     </div>
+    
+     <script>
+        function showModal(event) {
+            event.preventDefault();
+            document.getElementById('complaintModal').classList.add('active');
+        }
+    
+        function closeModall() {
+            document.getElementById('complaintModal').classList.remove('active');
+        }
+    </script>
+  <form>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="firstName" placeholder="First Name">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="companyName" class="form-label">Company Name (Optional)</label>
+      <input type="text" class="form-control" id="companyName" placeholder="Company Name">
+    </div>
+    <div class="form-group">
+      <label for="country" class="form-label">Country / Region</label>
+      <select id="country" class="form-control">
+        <option selected>xxxxxxxxxxxx</option>
+        <option>Other Country</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="streetAddress" class="form-label">Street Address</label>
+      <input type="text" class="form-control" id="streetAddress" placeholder="Street Address">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="town" class="form-label">Town / City</label>
+        <input type="text" class="form-control" id="town" placeholder="Town / City">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="province" class="form-label">Province</label>
+        <select id="province" class="form-control">
+          <option selected>xxxxxxxxxxx</option>
+          <option>xxxxxxxxxxxxe</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="phone" class="form-label">Phone</label>
+      <input type="text" class="form-control" id="phone" placeholder="Phone">
+    </div>
+    <div class="form-group">
+      <label for="email" class="form-label">Email Address</label>
+      <input type="email" class="form-control" id="email" placeholder="Email Address">
+    </div>
+    <div class="form-group">
+      <label for="additionalInfo" class="form-label">Additional Information</label>
+      <input type="text" class="form-control" id="additionalInfo" placeholder="Additional Information">
+    </div>
+    <button type="submit" class="btn btn-submit">Submit</button>
+  </form>
+</div>
+
+</body>
+</html>
