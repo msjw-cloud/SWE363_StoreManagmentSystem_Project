@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Store Manager - Login</title>
+    <link rel="stylesheet" href="logPage.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="left-most">
+        <div>Welcome</div>
+      </div>
+      <div class="righ-most">
+        <button onclick="window.location.href='logPage.html'">
+          <i class="fas fa-cube"></i> Logo
+        </button>
+        <button onclick="window.location.href='signup.html'">
+          <i class="fas fa-user-plus"></i> Signup
+        </button>
+      </div>
+    </div>
+
+    <div class="log-body">
+      <div class="image-section">
+        <img src="storeManager.png" alt="E-commerce illustration">
+      </div>
+      
+      <div class="login-form">
+        <h2>Login</h2>
+        <form id="loginForm" onsubmit="return false;">
+          <div class="input-group">
+            <input 
+              type="email" 
+              id="emailInput" 
+              placeholder="Email ID" 
+              required
+              autocomplete="email">
+          </div>
+
+          <div class="input-group">
+            <input 
+              type="password" 
+              id="passwordInput" 
+              placeholder="Password" 
+              required
+              autocomplete="current-password">
+          </div>
+
+          <button 
+            type="button" 
+            onclick="handleLogin()"
+            class="login-button">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Temporary solution: Clear localStorage when arriving at login page
+      localStorage.clear(); // Add this at the top of your script
+      // Function to validate email format
+      function isValidEmail(email) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return emailRegex.test(email);
+      }
+
+      // Handle login function
+      function handleLogin() {
+          const email = document.getElementById('emailInput').value.trim();
+          const password = document.getElementById('passwordInput').value.trim();
+          
+          // Basic validation
+          if (!email || !password) {
+              alert('Please fill in all fields');
+              return;
+          }
+
+          if (!isValidEmail(email)) {
+              alert('Please enter a valid email address');
+              return;
+          }
+
+          if (password.length < 1) {
+              alert('Please enter your password');
+              return;
+          }
+
+          // Store login state
+          try {
+              localStorage.setItem('isLoggedIn', 'true');
+              localStorage.setItem('userEmail', email);
+              
+              // Redirect to home page
+              // Update this path based on your folder structure
+              window.location.href = '../Homepage/Home.html';
+          } catch (error) {
+              console.error('Error during login:', error);
+              alert('An error occurred during login. Please try again.');
+          }
+      }
+
+      // Handle Enter key press
+      document.getElementById('loginForm').addEventListener('keypress', function(event) {
+          if (event.key === 'Enter') {
+              event.preventDefault();
+              handleLogin();
+          }
+      });
+
+      // Check if user is already logged in
+      document.addEventListener('DOMContentLoaded', function() {
+          const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+          if (isLoggedIn) {
+              window.location.href = '../Homepage/Home.html';
+          }
+      });
+    </script>
+  </body>
+</html>
