@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - StoreFlow</title>
+    <link rel="stylesheet" href="profilePage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-store"></i>
+            <span>StoreFlow</span>
+        </div>
+        <button class="sidebar-toggle" aria-label="Toggle sidebar">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <nav>
+            <a href="../HomePage/homePage.html" class="menu-item" data-title="Homepage">
+                <i class="fas fa-home"></i>
+                <span>Homepage</span>
+            </a>
+            <a href="../InventoryPage/inventoryPage.html" class="menu-item" data-title="Inventory">
+                <i class="fas fa-boxes"></i>
+                <span>Inventory</span>
+            </a>
+            <a href="../PurchasePage/purchasePage.html" class="menu-item" data-title="Purchase">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Purchase</span>
+            </a>
+            <a href="../ContactPage/contactPage.html" class="menu-item" data-title="Contact">
+                <i class="fas fa-address-book"></i>
+                <span>Contact</span>
+            </a>
+            <a href="../TasksPage/tasksPage.html" class="menu-item" data-title="Tasks">
+                <i class="fas fa-tasks"></i>
+                <span>Tasks</span>
+            </a>
+            <a href="../ReportPage/reportPage.html" class="menu-item" data-title="Report">
+                <i class="fas fa-flag"></i>
+                <span>Report</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header>
+            <div class="left-section">
+                <div class="user-info" onclick="window.location.href='../ProfilePage/profilePage.html'">
+                    <div class="avatar" id="userAvatar">F</div>
+                    <div class="user-details">
+                        <div class="name">Faisal</div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-section">
+                <button class="logout" onclick="window.location.href='../LoginPage/logPage.html'">
+                    LogOut <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="profile-card">
+                <h1>User Profile</h1>
+                <div class="profile-form">
+                    <div class="profile-picture">
+                        <div class="avatar large" id="largeUserAvatar">F</div>
+                        <button class="upload-btn">Upload Picture</button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="profileName">Name</label>
+                        <input type="text" id="profileName" placeholder="Name" value="Faisal">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" placeholder="Phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Availability</label>
+                        <div class="availability-options">
+                            <label class="radio-label">
+                                <input type="radio" name="availability" value="available" checked>
+                                <span>Available</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="availability" value="busy">
+                                <span>Busy</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button class="update-btn" onclick="updateProfile(event)">UPDATE</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Function to update profile
+        function updateProfile(event) {
+            event.preventDefault();
+            const newName = document.getElementById('profileName').value;
+            
+            // Update name in header
+            document.querySelector('.user-info .name').textContent = newName;
+            
+            // Update all avatars
+            const avatarElements = document.querySelectorAll('.avatar');
+            avatarElements.forEach(avatar => {
+                avatar.textContent = newName.charAt(0).toUpperCase();
+            });
+            
+            // Store in sessionStorage
+            sessionStorage.setItem('userName', newName);
+            
+            // Show success message
+            alert('Profile updated successfully!');
+        }
+
+        // On page load, check for stored name
+        window.onload = function() {
+            const storedName = sessionStorage.getItem('userName');
+            if (storedName) {
+                document.getElementById('profileName').value = storedName;
+                document.querySelector('.user-info .name').textContent = storedName;
+                // Update all avatars
+                const avatarElements = document.querySelectorAll('.avatar');
+                avatarElements.forEach(avatar => {
+                    avatar.textContent = storedName.charAt(0).toUpperCase();
+                });
+            }
+        }
+    </script>
+
+    <script src="../Homepage/sidebar.js"></script>
+</body>
+</html>
