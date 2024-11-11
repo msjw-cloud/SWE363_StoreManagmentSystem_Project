@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoreFlow - Tasks</title>
+    <link rel="stylesheet" href="tasksPage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-store"></i>
+            <span>StoreFlow</span>
+        </div>
+        <button class="sidebar-toggle" aria-label="Toggle sidebar">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <nav>
+            <a href="../HomePage/homePage.html" class="menu-item" data-title="Homepage">
+                <i class="fas fa-home"></i>
+                <span>Homepage</span>
+            </a>
+            <a href="../InventoryPage/inventoryPage.html" class="menu-item" data-title="Inventory">
+                <i class="fas fa-boxes"></i>
+                <span>Inventory</span>
+            </a>
+            <a href="../PurchasePage/purchasePage.html" class="menu-item" data-title="Purchase">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Purchase</span>
+            </a>
+            <a href="../ContactPage/contactPage.html" class="menu-item" data-title="Contact">
+                <i class="fas fa-address-book"></i>
+                <span>Contact</span>
+            </a>
+            <a href="../TasksPage/tasksPage.html" class="menu-item active" data-title="Tasks">
+                <i class="fas fa-tasks"></i>
+                <span>Tasks</span>
+            </a>
+            <a href="../ReportPage/reportPage.html" class="menu-item" data-title="Report">
+                <i class="fas fa-flag"></i>
+                <span>Report</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header>
+            <div class="left-section">
+                <div class="user-info" onclick="window.location.href='../ProfilePage/profilePage.html'">
+                    <div class="avatar" id="userAvatar">F</div>
+                    <div class="user-details">
+                        <div class="name">Faisal</div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-section">
+                <button class="logout" onclick="window.location.href='../LoginPage/logPage.html'">
+                    LogOut <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="content">
+            <section class="tasks-overview">
+                <h2>Tasks Overview</h2>
+
+                <div class="task-categories">
+                    <div class="category-card">
+                        <div class="category-icon"><i class="fas fa-clock"></i></div>
+                        <div class="category-info">
+                            <h3>Pending</h3>
+                            <span class="task-count">4</span>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon"><i class="fas fa-spinner"></i></div>
+                        <div class="category-info">
+                            <h3>In Progress</h3>
+                            <span class="task-count">3</span>
+                        </div>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon"><i class="fas fa-check"></i></div>
+                        <div class="category-info">
+                            <h3>Completed</h3>
+                            <span class="task-count">1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task-type-tabs">
+                    <button class="type-tab active" data-type="general">General Tasks</button>
+                    <button class="type-tab" data-type="delivery">Delivery Tasks</button>
+                </div>
+
+                <div class="task-section general-tasks active">
+                    <div class="task-filters">
+                        <button class="filter-btn active">All</button>
+                        <button class="filter-btn">Today</button>
+                        <button class="filter-btn">This Week</button>
+                        <button class="filter-btn">This Month</button>
+                    </div>
+
+                    <div class="task-list">
+                        <div class="task-item" data-status="pending">
+                            <div class="checkbox"></div>
+                            <div class="task-content">
+                                <h3>Storage Check</h3>
+                                <p>Perform a daily count of stock items and verify with the inventory system</p>
+                                <div class="task-meta">
+                                    <span class="due-date"><i class="far fa-calendar"></i> Due Today</span>
+                                    <span class="priority high"><i class="fas fa-flag"></i> High</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="task-item" data-status="in-progress">
+                            <div class="checkbox"></div>
+                            <div class="task-content">
+                                <h3>Update Product Prices</h3>
+                                <p>Apply new pricing scheme for electronics department</p>
+                                <div class="task-meta">
+                                    <span class="due-date"><i class="far fa-calendar"></i> Due Tomorrow</span>
+                                    <span class="priority medium"><i class="fas fa-flag"></i> Medium</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="task-item" data-status="completed">
+                            <div class="checkbox checked"></div>
+                            <div class="task-content">
+                                <h3>Monthly Inventory Report</h3>
+                                <p>Prepare and submit the monthly inventory report</p>
+                                <div class="task-meta">
+                                    <span class="due-date"><i class="far fa-calendar"></i> Completed</span>
+                                    <span class="priority low"><i class="fas fa-flag"></i> Low</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task-section delivery-tasks">
+                    <div class="delivery-task-list">
+                        <div class="delivery-task-item" data-status="pending">
+                            <div class="delivery-header">
+                                <h3>Order #1234</h3>
+                                <span class="order-date">Today, 10:30 AM</span>
+                            </div>
+                            <div class="delivery-content">
+                                <div class="delivery-details">
+                                    <p><strong>Customer:</strong> John Smith</p>
+                                    <p><strong>Items:</strong> LG TV 55"</p>
+                                    <p><strong>Address:</strong> 123 Main St, Downtown</p>
+                                </div>
+                                <div class="delivery-status-flow">
+                                    <div class="status-step active" data-status="pending">
+                                        <i class="fas fa-box"></i>
+                                        <span>Pending</span>
+                                    </div>
+                                    <div class="status-step" data-status="processing">
+                                        <i class="fas fa-cog"></i>
+                                        <span>Processing</span>
+                                    </div>
+                                    <div class="status-step" data-status="shipping">
+                                        <i class="fas fa-truck"></i>
+                                        <span>Shipping</span>
+                                    </div>
+                                    <div class="status-step" data-status="delivered">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Delivered</span>
+                                    </div>
+                                </div>
+                                <div class="delivery-actions">
+                                    <button class="status-update-btn" data-next-status="processing">
+                                        Start Processing
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="delivery-task-item" data-status="shipping">
+                            <div class="delivery-header">
+                                <h3>Order #1235</h3>
+                                <span class="order-date">Today, 11:45 AM</span>
+                            </div>
+                            <div class="delivery-content">
+                                <div class="delivery-details">
+                                    <p><strong>Customer:</strong> Sarah Johnson</p>
+                                    <p><strong>Items:</strong> GREE AC Unit</p>
+                                    <p><strong>Address:</strong> 456 Oak Ave, Uptown</p>
+                                </div>
+                                <div class="delivery-status-flow">
+                                    <div class="status-step completed" data-status="pending">
+                                        <i class="fas fa-box"></i>
+                                        <span>Pending</span>
+                                    </div>
+                                    <div class="status-step completed" data-status="processing">
+                                        <i class="fas fa-cog"></i>
+                                        <span>Processing</span>
+                                    </div>
+                                    <div class="status-step active" data-status="shipping">
+                                        <i class="fas fa-truck"></i>
+                                        <span>Shipping</span>
+                                    </div>
+                                    <div class="status-step" data-status="delivered">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Delivered</span>
+                                    </div>
+                                </div>
+                                <div class="delivery-actions">
+                                    <button class="status-update-btn" data-next-status="delivered">
+                                        Mark as Delivered
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="../Homepage/sidebar.js"></script>
+    <script src="tasksPage.js"></script>
+</body>
+</html>

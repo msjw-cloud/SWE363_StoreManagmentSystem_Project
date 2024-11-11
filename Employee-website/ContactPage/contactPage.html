@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - StoreFlow</title>
+    <link rel="stylesheet" href="contactPage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-store"></i>
+            <span>StoreFlow</span>
+        </div>
+        <button class="sidebar-toggle" aria-label="Toggle sidebar">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <nav>
+            <a href="../HomePage/homePage.html" class="menu-item" data-title="Homepage">
+                <i class="fas fa-home"></i>
+                <span>Homepage</span>
+            </a>
+            <a href="../InventoryPage/inventoryPage.html" class="menu-item" data-title="Inventory">
+                <i class="fas fa-boxes"></i>
+                <span>Inventory</span>
+            </a>
+            <a href="../PurchasePage/purchasePage.html" class="menu-item" data-title="Purchase">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Purchase</span>
+            </a>
+            <a href="../ContactPage/contactPage.html" class="menu-item active" data-title="Contact">
+                <i class="fas fa-address-book"></i>
+                <span>Contact</span>
+            </a>
+            <a href="../TasksPage/tasksPage.html" class="menu-item" data-title="Tasks">
+                <i class="fas fa-tasks"></i>
+                <span>Tasks</span>
+            </a>
+            <a href="../ReportPage/reportPage.html" class="menu-item" data-title="Report">
+                <i class="fas fa-flag"></i>
+                <span>Report</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header>
+            <div class="left-section">
+                <div class="user-info" onclick="window.location.href='../ProfilePage/profilePage.html'">
+                    <div class="avatar" id="userAvatar">F</div>
+                    <div class="user-details">
+                        <div class="name">Faisal</div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-section">
+                <button class="logout" onclick="window.location.href='../LoginPage/logPage.html'">
+                    LogOut <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="employees-container">
+                <h1>Employees</h1>
+                
+                <div class="search-bar">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search">
+                    <button class="clear-search">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div class="employees-list">
+                    <div class="list-header">
+                        <div class="header-cell">Name</div>
+                        <div class="header-cell">Gender</div>
+                        <div class="header-cell">Email</div>
+                        <div class="header-cell">Action</div>
+                    </div>
+
+                    <div class="list-body">
+                        <div class="list-row">
+                            <div class="cell">Pat Black</div>
+                            <div class="cell">Male</div>
+                            <div class="cell">bill.berry@example.com</div>
+                            <div class="cell">
+                                <button class="message-btn" onclick="openNewMessage({
+                                    name: 'Pat Black',
+                                    email: 'bill.berry@example.com',
+                                    gender: 'Male'
+                                })">
+                                    Message
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="list-row">
+                            <div class="cell">Angel Jones</div>
+                            <div class="cell">Female</div>
+                            <div class="cell">glen.ramirez@example.com</div>
+                            <div class="cell">
+                                <button class="message-btn" onclick="openNewMessage({
+                                    name: 'Angel Jones',
+                                    email: 'glen.ramirez@example.com',
+                                    gender: 'Female'
+                                })">
+                                    Message
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="list-row">
+                            <div class="cell">Max Edwards</div>
+                            <div class="cell">Female</div>
+                            <div class="cell">renee.hughes@example.com</div>
+                            <div class="cell">
+                                <button class="message-btn" onclick="openNewMessage({
+                                    name: 'Max Edwards',
+                                    email: 'renee.hughes@example.com',
+                                    gender: 'Female'
+                                })">
+                                    Message
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="list-row">
+                            <div class="cell">Bruce Fox</div>
+                            <div class="cell">Male</div>
+                            <div class="cell">craig.kelley@example.com</div>
+                            <div class="cell">
+                                <button class="message-btn" onclick="openNewMessage({
+                                    name: 'Bruce Fox',
+                                    email: 'craig.kelley@example.com',
+                                    gender: 'Male'
+                                })">
+                                    Message
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="list-row">
+                            <div class="cell">Devon Fisher</div>
+                            <div class="cell">Male</div>
+                            <div class="cell">joy.ramos@example.com</div>
+                            <div class="cell">
+                                <button class="message-btn" onclick="openNewMessage({
+                                    name: 'Devon Fisher',
+                                    email: 'joy.ramos@example.com',
+                                    gender: 'Male'
+                                })">
+                                    Message
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Message Modal -->
+    <div class="modal" id="messageModal">
+        <div class="modal-content">
+            <h2>New Message</h2>
+            <form id="messageForm" class="message-form">
+                <div class="recipient-info">
+                    <div class="recipient-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="recipient-details">
+                        <div class="recipient-name"></div>
+                        <div class="recipient-email"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="subject" placeholder="Subject" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="Write your message here..." rows="6" class="form-input" required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="send-btn">
+                        <i class="fas fa-paper-plane"></i> Send
+                    </button>
+                    <button type="button" class="cancel-btn" onclick="closeMessageModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../Homepage/sidebar.js"></script>
+    <script src="contactPage.js"></script>
+</body>
+</html>
