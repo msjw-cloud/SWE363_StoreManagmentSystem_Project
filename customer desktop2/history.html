@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orders</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style/order-history_style.css">
+  <link rel="stylesheet" href="style/dashboard_style.css">
+</head>
+<body>
+  <div>
+    <div class="top_navbar">
+        <div class="logo">
+            <div class="menu">
+                <div class="profile">
+                    <button>LOGO</button>
+                    <span id="user">R</span>
+                    <div class="name-description">
+                        <span>Rakan</span>
+                        <span>Description</span>
+                    </div>
+                   <a href="home.html"><span class="menu"> Home </span></a>
+                        <a href="cart.html"><span class="menu"> shopping Card </span></a>
+                        <a href="order.html"><span class="menu"> Orders </span></a>
+                        <a href="profile.html"><span class="menu"> Profile </span></a>
+                        <a href="#" onclick="showModal(event)"><span class="menu"> Complaints </span></a>
+                        
+                    <span class="icon"><i class="fas fa-search"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <ul>
+            <li>
+                <a href="home.html">
+                    <span class="icon"><i class="fas fa-house"></i></span>
+                    <span class="text">HomePage</span>
+                </a>
+            </li>
+            <li>
+                <a href="cart.html">
+                    <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+                    <span class="text">Shopping Cart</span>
+                </a>
+            </li>
+            <li>
+                <a href="order.html">
+                    <span class="icon"><i class="fas fa-box-open"></i></span>
+                    <span class="text">Orders</span>
+                </a>
+            </li>
+            <li>
+                <a href="profile.html">
+                    <span class="icon"><i class="fas fa-user"></i></span>
+                    <span class="text">Profile</span>
+                </a>
+            </li>
+            <li>
+              <a href="#" onclick="showModal(event)">
+                  <span class="icon"><i class="fas fa-comment-dots"></i></span>
+                  <span class="text">Complaints</span>
+              </a>
+          </li>
+      </ul>
+  </div>
+  <div class="modal" id="complaintModal">
+      <div class="modal-content">
+          <button onclick="closeModal()" style="float: right;">Close</button>
+          <h3>Submit Your Complaint</h3>
+          <form action="" method="post">
+              <input type="text" name="subject" placeholder="Subject" required>
+              <textarea name="message" placeholder="Your complaint message..." rows="5" required></textarea>
+              <button type="submit">Submit</button>
+          </form>
+      </div>
+  </div>
+  <script>
+      function showModal(event) {
+          event.preventDefault();
+          document.getElementById('complaintModal').classList.add('active');
+      }
+
+      function closeModal() {
+          document.getElementById('complaintModal').classList.remove('active');
+      }
+  </script>
+  <h2>Orders</h2>
+
+  <div class="search-bar">
+    <span>🔍</span>
+    <input type="text"id="search" onkeyup="searchFunction()" placeholder="Search">
+  </div>
+
+  <div class="table-container">
+    <table class="table" id="data">
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Date</th>
+          <th>Details</th>
+          <th>Payment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>28890</td>
+          <td>2024/10/4</td>
+          <td>xxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+          <td class="status-shipping">100$</td>
+        </tr>
+        <tr>
+          <td>28900</td>
+          <td>2024/6/23</td>
+          <td>xxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+          <td class="status-processing">5000$</td>
+        </tr>
+        <tr>
+          <td>28997</td>
+          <td>2023/4/7</td>
+          <td>xxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+          <td class="status-delivered">800$</td>
+        </tr>
+        <tr>
+          <td>28770</td>
+          <td>2023/4/7</td>
+          <td>xxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+          <td class="status-delivered">350$</td>
+        </tr>
+        <tr>
+          <td>28700</td>
+          <td>2023/4/7</td>
+          <td>xxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+          <td class="status-delivered">200$</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pagination-container">
+    <div class="pagination">
+      <a href="#" class="active">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <span>...</span>
+      <a href="#">44</a>
+      <a href="#">45</a>
+    </div>
+  </div>
+
+</body>
+</html>
+<script>
+  function searchFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("search");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("data");
+      tr = table.getElementsByTagName("tr");
+  
+      for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[1];
+          if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  tr[i].style.display = "";
+              } else {
+                  tr[i].style.display = "none";
+              }
+          }
+      }
+  }
+  </script>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <link rel="stylesheet" href="style/dashboard_style.css">
+    <style>
+        body {
+            background-color: #FFF9E4;
+        }
+        
+        .checkout-container {
+            max-width: 700px;
+            margin: 50px auto;
+            background-color: #FFF3CD;
+            position: absolute;
+            top:30px;
+            margin-left:300px;
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+        h4{
+            color: rgb(255, 178, 53);
+        }
+        .checkout-container h5, .checkout-container p, .checkout-container label {
+            font-weight: bold;
+        }
+        .product-name {
+            color: #E58600;
+            font-weight: bold;
+        }
+        .total-price {
+            color: #E58600;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .payment-option {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .payment-option label {
+            margin-left: 10px;
+            font-weight: normal;
+            font-size: 0.9em;
+        }
+        .place-order-btn {
+            width: 100%;
+            border: 1px solid #E58600;
+            color: #E58600;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: transparent;
+            cursor: pointer;
+        }
+        .place-order-btn:hover {
+            background-color: #E58600;
+            color: white;
+        }
+        .option-description {
+            color: #6c757d;
+            font-size: 0.85em;
+            margin-top: 5px;
+        }
+        
+
+
+.name-description {
+  font-size:10px;
+}
+#user {
+   
+    border-radius: 20px;
+    margin-right: 15px;
+}
+
+.sidebar ul li a  {
+   
+    font-size:15px;
+}
+
+
+    </style>
+</head>
+<body>
+    <div>
+        <div class="top_navbar">
+            <div class="logo">
+                <div class="menu">
+                    <div class="profile">
+                        <button>LOGO</button>
+                        <span id="user">R</span>
+                        <div class="name-description">
+                            <span>Rakan</span>
+                            <span>Description</span>
+                        </div>
+                        <a href="home.html"><span class="menu"> Home </span></a>
+                        <a href="cart.html"><span class="menu"> shopping Card </span></a>
+                        <a href="order.html"><span class="menu"> Orders </span></a>
+                        <a href="profile.html"><span class="menu"> Profile </span></a>
+                        <a href="#" onclick="showModal(event)"><span class="menu"> Complaints </span></a>
+                        
+                        <span class="icon"><i class="fas fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="home.html">
+                        <span class="icon"><i class="fas fa-house"></i></span>
+                        <span class="text">HomePage</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="cart.html">
+                        <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+                        <span class="text">Shopping Cart</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="order.html">
+                        <span class="icon"><i class="fas fa-box-open"></i></span>
+                        <span class="text">Orders</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html">
+                        <span class="icon"><i class="fas fa-user"></i></span>
+                        <span class="text">Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="showModal(event)">
+                        <span class="icon"><i class="fas fa-comment-dots"></i></span>
+                        <span class="text">Complaints</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    <div class="modal" id="complaintModal">
+        <div class="modal-content">
+            <button onclick="closeModall()" style="float: right;">Close</button>
+            <h3>Submit Your Complaint</h3>
+                <form action="" method="post">
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <textarea name="message" placeholder="Your complaint message..." rows="5" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+        </div>
+     </div>
+    
+     <script>
+        function showModal(event) {
+            event.preventDefault();
+            document.getElementById('complaintModal').classList.add('active');
+        }
+    
+        function closeModall() {
+            document.getElementById('complaintModal').classList.remove('active');
+        }
+    </script>   
+
+<div class="container checkout-container">
+<h4>Shopping Cart > Checkout</h4>
+<br>
+    <div class="row">
+        <div class="col-8">
+            <h5>Product</h5>
+            <a href="#" class="product-name">LG Refrigerator</a> <span>x 1</span>
+            <p>Total</p>
+            <p>Subtotal</p>
+        </div>
+        <div class="col-4 text-right">
+            <h5>Subtotal</h5>
+            <p>Rs.15000</p>
+            <p>Rs.15000</p>
+            
+            <p class="total-price">Rs. 250,000.00</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="payment-option">
+        <input type="radio" name="payment" id="bankTransfer" checked>
+        <label for="bankTransfer">Direct Bank Transfer</label>
+    </div>
+    <p class="option-description">
+       xxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxx
+    </p>
+
+    <div class="payment-option">
+        <input type="radio" name="payment" id="cashDelivery">
+        <label for="cashDelivery">Cash On Delivery</label>
+    </div>
+    <p class="option-description">
+    xxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxx
+   </p>
+
+   <a href="cart.html"> <button class="place-order-btn mt-4">Place order</button></a>
+</div>
+</body>
+</html>
