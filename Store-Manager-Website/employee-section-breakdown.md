@@ -1,7 +1,7 @@
 # Employee Section Breakdown
 
 ## Employee List View
-![Employee List Interface](../images/employee1.png)
+![Employee List Interface](../images1/employee01.png)
 
 The main employee management interface with:
 - Page title "Employees"
@@ -69,7 +69,7 @@ thead tr {
 ```
 
 Add Employee Modal
-![Add Employee Modal](../images/employee2.png)
+![Add Employee Modal](../images/employee02.png)
 
 The modal contains:
 - Title "Add New Employee"
