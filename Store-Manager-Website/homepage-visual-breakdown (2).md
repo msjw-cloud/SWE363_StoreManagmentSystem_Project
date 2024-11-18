@@ -133,7 +133,7 @@ function showProductTypes(categoryId) {
 ```
 
 ## Category Edit Interface
-![Category Edit](images1/homepage04.png)
+![Category Edit](images1/homepage05.png)
 
 ```javascript
 function editCategory(categoryId) {
@@ -166,7 +166,7 @@ function editCategory(categoryId) {
 ```
 
 ## Add Category Interface
-![Add Category Form](images1/homepage05.png)
+![Add Category Form](images1/homepage04.png)
 
 ```javascript
 function handleAddCategory() {
