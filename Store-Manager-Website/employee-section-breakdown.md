@@ -1,7 +1,7 @@
 # Employee Section Breakdown
 
 ## Employee List View
-![Employee List Interface](../images1/employee01.png)
+![Employee List Interface](images1/employee01.png)
 
 The main employee management interface with:
 - Page title "Employees"
