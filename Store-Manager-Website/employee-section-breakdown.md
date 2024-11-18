@@ -69,7 +69,7 @@ thead tr {
 ```
 
 Add Employee Modal
-![Add Employee Modal](../images/employee02.png)
+![Add Employee Modal](images/employee02.png)
 
 The modal contains:
 - Title "Add New Employee"
