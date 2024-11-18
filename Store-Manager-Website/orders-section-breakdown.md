@@ -1,7 +1,7 @@
 # Orders Section Breakdown
 
 ## Approved Orders Tab
-![Approved Orders View](images1/order01.png)
+![Approved Orders View](images1/order02.png)
 
 ### Components Visible:
 1. Header section:
@@ -71,7 +71,7 @@ tabButtons.forEach(button => {
 ```
 
 ## Pending Orders Tab
-![Pending Orders View](images1/order02.png)
+![Pending Orders View](images1/order01.png)
 
 ### Components Visible:
 1. Pending Orders Table:
