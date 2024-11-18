@@ -1,7 +1,7 @@
 # Product Section Visual Breakdown
 
 ## Product Management Header
-![Product Management Header](images1/product01.png)
+![Product Management Header](images1/product03.png)
 
 Components displayed:
 - Product section header with logo
@@ -65,7 +65,7 @@ function editProduct(categoryId, companyName, productName) {
 ```
 
 ## Product Grid View
-![Product Grid Layout](images1/product03.png)
+![Product Grid Layout](images1/product01.png)
 
 Components displayed:
 - Filter dropdowns (Categories, Companies)
