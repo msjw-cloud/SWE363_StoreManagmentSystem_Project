@@ -1,7 +1,7 @@
 # Homepage Section Image Analysis
 
 ## Dashboard Overview
-![Dashboard Main View](../images/homepage1.png)
+![Dashboard Main View](images1/homepage01.png)
 
 ### Visible Components:
 1. Navigation Sidebar:
@@ -66,7 +66,7 @@ new Chart(ctx, {
 ```
 
 ## Edit Product Modal
-![Edit Product Details](../images/homepage2.png)
+![Edit Product Details](images1/homepage03.png)
 
 Implementation:
 ```javascript
@@ -103,7 +103,7 @@ function getStockStatus(quantity) {
 ```
 
 ## Products View Modal
-![Products Type View](../images/homepage3.png)
+![Products Type View](images1/homepage02.png)
 
 ```javascript
 function showProductTypes(categoryId) {
@@ -133,7 +133,7 @@ function showProductTypes(categoryId) {
 ```
 
 ## Category Edit Interface
-![Category Edit](../images/homepage4.png)
+![Category Edit](images1/homepage04.png)
 
 ```javascript
 function editCategory(categoryId) {
@@ -166,7 +166,7 @@ function editCategory(categoryId) {
 ```
 
 ## Add Category Interface
-![Add Category Form](../images/homepage5.png)
+![Add Category Form](images1/homepage05.png)
 
 ```javascript
 function handleAddCategory() {
