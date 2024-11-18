@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="style/dashboard_style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #FFF9E4;
+        }
+        .sidebar ul li a {
+            font-size: 15px;
+        }
+        .name-description {
+            font-size: 10px;
+        }
+        #user {
+            border-radius: 20px;
+            margin-left: 50px;
+        }
+        .cart-container {
+            position: absolute;
+            top: 100px;
+            margin-left: 200px;
+            max-width: 80%;
+        }
+        .cart-totals {
+            background-color: #FFF3CD;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+        .cart-table {
+            background-color: #FFF;
+        }
+        .cart-totals h4, .cart-totals p {
+            font-weight: bold;
+            font-size: 1em;
+        }
+        .total-price {
+            color: #E58600;
+            font-weight: bold;
+        }
+        .cart-summary {
+            margin-top: 350px;
+            position: absolute;
+            top: 300px;
+            margin-left: 200px;
+            background-color: #FFF3CD;
+        }
+        .cart-summary .feature {
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        .feature-description {
+            color: #6c757d;
+            font-size: 0.8em;
+        }
+        .product-image {
+            width: 45px;
+            height: auto;
+        }
+        .btn-outline-secondary {
+            padding: 0px;
+            width: 25px;
+            height: 30px;
+        }
+        .form-control {
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="top_navbar">
+            <div class="logo">
+                <div class="menu">
+                    <div class="profile">
+                        <button>LOGO</button>
+                        <span id="user">R</span>
+                        <div class="name-description">
+                            <span>Rakan</span>
+                            <span>Description</span>
+                        </div>
+                        <a href="home.html"><span class="menu"> Home </span></a>
+                        <a href="cart.html"><span class="menu"> shopping Card </span></a>
+                        <a href="order.html"><span class="menu"> Orders </span></a>
+                        <a href="profile.html"><span class="menu"> Profile </span></a>
+                        <a href="#" onclick="showModal(event)"><span class="menu"> Complaints </span></a>
+                        
+                        <span class="icon"><i class="fas fa-search"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="home.html">
+                        <span class="icon"><i class="fas fa-house"></i></span>
+                        <span class="text">HomePage</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="cart.html">
+                        <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+                        <span class="text">Shopping Cart</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="order.html">
+                        <span class="icon"><i class="fas fa-box-open"></i></span>
+                        <span class="text">Orders</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html">
+                        <span class="icon"><i class="fas fa-user"></i></span>
+                        <span class="text">Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onclick="showModal(event)">
+                        <span class="icon"><i class="fas fa-comment-dots"></i></span>
+                        <span class="text">Complaints</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="modal" id="complaintModal">
+        <div class="modal-content">
+            <button onclick="closeModall()" style="float: right;">Close</button>
+            <h3>Submit Your Complaint</h3>
+                <form action="" method="post">
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <textarea name="message" placeholder="Your complaint message..." rows="5" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+        </div>
+    </div>
+    <script>
+        function showModal(event) {
+            event.preventDefault();
+            document.getElementById('complaintModal').classList.add('active');
+        }
+        function closeModall() {
+            document.getElementById('complaintModal').classList.remove('active');
+        }
+    </script>
+    <div class="container cart-container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="cart-table p-3">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <td>Cancel</td>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src="images/h1.png" alt="Product" class="product-image mr-2">
+                                    <a href="#" class="text-warning font-weight-bold">LG Refrigerator</a>
+                                </td>
+                                <td>Rs. 250,000.00</td>
+                                <td>
+                                    <div class="input-group input-group-sm">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-outline-secondary" type="button" onclick="decreaseQuantity()">-</button>
+                                        </div>
+                                        <input type="text" class="form-control text-center" id="quantity" value="1" style="max-width: 40px;" readonly>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button" onclick="increaseQuantity()">+</button>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="color:red">Cancel</td>
+                                <td>  <span class="float-right total-price">Rs. 15000</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="cart-totals p-3">
+                    <h4>Cart Totals</h4>
+                    <p>Subtotal <span class="float-right">Rs.15000</span></p>
+                    <p>Total <span class="float-right total-price">Rs. 15000</span></p>
+                    <a href="billing.html"><button class="btn btn-outline-warning btn-sm btn-block mt-2">Check Out</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cart-summary mt-3">
+        <div class="row text-center">
+            <div class="col-md-4 feature">
+                <p>Free Delivery</p>
+                <p class="feature-description">Mention that customers can receive br
+                    their purchases without  <br>
+                    additional shipping charges <br> .</p>
+            </div>
+            <div class="col-md-4 feature">
+                <p>90 Days Return</p>
+                <p class="feature-description">Not satisfied with your purchase? No worries! <br>
+                     Enjoy a full 90 days to return <br> your item for a refund or exchange..</p>
+            </div>
+            <div class="col-md-4 feature">
+                <p>Secure Payment</p>
+                <p class="feature-description"> Your payment security is our top priority.
+                    <br> We use industry-standard encryption br
+                    and trusted payment partners to ensure your data is safe</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        function increaseQuantity() {
+            let quantityInput = document.getElementById('quantity');
+            let currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+            updateSubtotal();
+        }
+
+        
+        function decreaseQuantity() {
+            let quantityInput = document.getElementById('quantity');
+            let currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+                updateSubtotal();
+            }
+        }
+
+       
+        function updateSubtotal() {
+            let quantity = parseInt(document.getElementById('quantity').value);
+            let pricePerItem = 15000; 
+            let subtotal = quantity * pricePerItem;
+            document.querySelector('td').innerHTML = "Rs. " + subtotal.toFixed(0);
+            updateTotal();
+        }
+
+        // Update the total price
+        function updateTotal() {
+            let quantity = parseInt(document.getElementById('quantity').value);
+            let pricePerItem = 15000; 
+            let total = quantity * pricePerItem;
+            document.querySelector('.total-price').innerHTML = "Rs. " + total.toFixed(0); 
+        }
+    </script>
+</body>
+</html>
