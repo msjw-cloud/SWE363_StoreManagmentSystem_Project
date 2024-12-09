@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 const orderSchema = new mongoose.Schema({
     orderId: {
         type: String,
-        required: true,
-        unique: true
+        unique: true,
+        // Remove required: true since we're auto-generating it
     },
     product: {
         type: String,
