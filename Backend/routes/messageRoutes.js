@@ -7,7 +7,12 @@ const User = require('../models/userModel');
 // Get all received messages for a user
 router.get('/', async (req, res) => {
     try {
-        const messages = await Message.find({ recipient: req.body.userId })
+        const userId = req.query.userId;
+        if (!userId) {
+            return res.status(400).json({ message: 'userId is required' });
+        }
+
+        const messages = await Message.find({ recipient: userId })
             .populate('sender', 'name')
             .populate('recipient', 'name')
             .sort({ createdAt: -1 });
@@ -20,7 +25,12 @@ router.get('/', async (req, res) => {
 // Get sent messages
 router.get('/sent', async (req, res) => {
     try {
-        const messages = await Message.find({ sender: req.body.userId })
+        const userId = req.query.userId;
+        if (!userId) {
+            return res.status(400).json({ message: 'userId is required' });
+        }
+
+        const messages = await Message.find({ sender: userId })
             .populate('sender', 'name')
             .populate('recipient', 'name')
             .sort({ createdAt: -1 });
@@ -33,12 +43,18 @@ router.get('/sent', async (req, res) => {
 // Send a new message
 router.post('/', async (req, res) => {
     try {
+        const { userId, recipientId, subject, content, attachments } = req.body;
+        
+        if (!userId || !recipientId || !subject || !content) {
+            return res.status(400).json({ message: 'Missing required fields' });
+        }
+
         const message = new Message({
-            sender: req.body.userId,
-            recipient: req.body.recipientId,
-            subject: req.body.subject,
-            content: req.body.content,
-            attachments: req.body.attachments || []
+            sender: userId,
+            recipient: recipientId,
+            subject,
+            content,
+            attachments: attachments || []
         });
 
         const newMessage = await message.save();
@@ -87,8 +103,13 @@ router.delete('/:id', async (req, res) => {
 // Get all contacts (employees)
 router.get('/contacts', async (req, res) => {
     try {
+        const userId = req.query.userId;
+        if (!userId) {
+            return res.status(400).json({ message: 'userId is required' });
+        }
+
         const contacts = await User.find(
-            { _id: { $ne: req.body.userId } },
+            { _id: { $ne: userId } },
             'name email'
         ).sort({ name: 1 });
         res.json(contacts);
