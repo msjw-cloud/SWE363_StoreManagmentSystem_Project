@@ -7,6 +7,8 @@ const authRoutes = require('./routes/authRoutes');
 const employeeRoutes = require('./routes/employeeRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const calendarRoutes = require('./routes/calendarRoutes');
+const messageRoutes = require('./routes/messageRoutes');
+
 
 const app = express();
 
@@ -36,6 +38,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/employees', employeeRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/calendar/events', calendarRoutes);
+app.use('/api/messages', messageRoutes);
 
 // Test route
 app.get('/api/test', (req, res) => {
