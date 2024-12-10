@@ -11,6 +11,7 @@ const messageRoutes = require('./routes/messageRoutes');
 const taskRoutes = require('./routes/taskRoutes');
 const reportRoutes = require('./routes/reportRoutes');
 const cartRoutes = require('./routes/cartRoutes');
+const addressRoutes = require('./routes/addressRoutes');
 
 
 const app = express();
@@ -45,6 +46,7 @@ app.use('/api/messages', messageRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/reports', reportRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api/customer/address', addressRoutes);
 
 // Test route
 app.get('/api/test', (req, res) => {
