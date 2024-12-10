@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory - StoreFlow</title>
+    <link rel="stylesheet" href="inventoryPage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-store"></i>
+            <span>StoreFlow</span>
+        </div>
+        <button class="sidebar-toggle" aria-label="Toggle sidebar">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <nav>
+            <a href="../HomePage/homePage.html" class="menu-item" data-title="Homepage">
+                <i class="fas fa-home"></i>
+                <span>Homepage</span>
+            </a>
+            <a href="../InventoryPage/inventoryPage.html" class="menu-item active" data-title="Inventory">
+                <i class="fas fa-boxes"></i>
+                <span>Inventory</span>
+            </a>
+            <a href="../PurchasePage/purchasePage.html" class="menu-item" data-title="Purchase">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Purchase</span>
+            </a>
+            <a href="../ContactPage/contactPage.html" class="menu-item" data-title="Contact">
+                <i class="fas fa-address-book"></i>
+                <span>Contact</span>
+            </a>
+            <a href="../TasksPage/tasksPage.html" class="menu-item" data-title="Tasks">
+                <i class="fas fa-tasks"></i>
+                <span>Tasks</span>
+            </a>
+            <a href="../ReportPage/reportPage.html" class="menu-item" data-title="Report">
+                <i class="fas fa-flag"></i>
+                <span>Report</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header>
+            <div class="left-section">
+                <div class="user-info" onclick="window.location.href='../ProfilePage/profilePage.html'">
+                    <div class="avatar" id="userAvatar">F</div>
+                    <div class="user-details">
+                        <div class="name">Faisal</div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-section">
+                <button class="logout" onclick="window.location.href='../LoginPage/logPage.html'">
+                    LogOut <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="inventory-container">
+                <h1>Inventory</h1>
+                
+                <div class="inventory-tabs">
+                    <button class="tab-btn active" data-tab="current">All</button>
+                    <button class="tab-btn" data-tab="coming">Coming Shipment</button>
+                </div>
+
+                <div class="inventory-controls">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search inventory...">
+                        <button class="clear-search">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mobile-actions">
+                    <div class="mobile-search-bar">
+                        <input type="text" placeholder="Search inventory...">
+                        <button class="clear-search">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <button class="add-product-btn mobile" onclick="toggleModal('addProductModal')">
+                        <i class="fas fa-plus"></i> Add Product
+                    </button>
+                    <div class="mobile-filter-container">
+                        <button class="mobile-filter-btn" onclick="toggleMobileFilter()">
+                            <span><i class="fas fa-filter"></i> Filter Products</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="mobile-filter-menu" id="mobileFilterMenu">
+                            <button onclick="sortBy('category')">Sort by Category</button>
+                            <button onclick="sortBy('price')">Sort by Price</button>
+                            <button onclick="sortBy('name')">Sort by Product Name</button>
+                            <button onclick="sortBy('items')">Sort by Items</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Current Inventory Table -->
+                <div class="inventory-list" id="currentInventory">
+                    <div class="table-header">
+                        <div class="header-cell actions">Actions</div>
+                        <div class="header-cell">Product</div>
+                        <div class="header-cell">Category</div>
+                        <div class="header-cell">Items</div>
+                        <div class="header-cell">Type</div>
+                        <div class="header-cell price">
+                            Price
+                            <div class="filter-dropdown">
+                                <button class="filter-btn" onclick="toggleFilter()">
+                                    <i class="fas fa-filter"></i>
+                                </button>
+                                <div class="filter-menu" id="filterMenu">
+                                    <button onclick="sortBy('category')">By Category</button>
+                                    <button onclick="sortBy('price')">By Price</button>
+                                    <button onclick="sortBy('name')">By Product</button>
+                                    <button onclick="sortBy('items')">By Items</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-body">
+                        <!-- Table content will be dynamically populated -->
+                    </div>
+                </div>
+
+                <!-- Coming Shipment Table -->
+                <div class="inventory-list" id="comingShipment" style="display: none;">
+                    <div class="table-header">
+                        <div class="header-cell">Product</div>
+                        <div class="header-cell">Category</div>
+                        <div class="header-cell">Items</div>
+                        <div class="header-cell">Type</div>
+                        <div class="header-cell price">
+                            Price
+                            <div class="filter-dropdown">
+                                <button class="filter-btn" onclick="toggleFilter()">
+                                    <i class="fas fa-filter"></i>
+                                </button>
+                                <div class="filter-menu" id="filterMenu">
+                                    <button onclick="sortBy('category')">By Category</button>
+                                    <button onclick="sortBy('price')">By Price</button>
+                                    <button onclick="sortBy('name')">By Product</button>
+                                    <button onclick="sortBy('items')">By Items</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-body">
+                        <!-- Coming shipment data will be here -->
+                    </div>
+                </div>
+
+                <button class="add-product-btn desktop" onclick="toggleModal('addProductModal')">
+                    add product
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Product Modal -->
+    <div class="modal" id="addProductModal">
+        <div class="modal-content">
+            <h2>Add Product</h2>
+            <form id="addProductForm" class="product-form">
+                <div class="image-upload">
+                    <button type="button" class="upload-btn">
+                        <i class="fas fa-upload"></i>
+                    </button>
+                    <span>Upload Image</span>
+                </div>
+                
+                <div class="form-fields">
+                    <div class="form-group">
+                        <input type="text" name="productName" placeholder="Product Name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <select name="category" class="form-input" required>
+                            <option value="">Select Category</option>
+                            <option value="Refrigerators">Refrigerators</option>
+                            <option value="Washing Machines">Washing Machines</option>
+                            <option value="ACs">ACs</option>
+                            <option value="Dishwashers">Dishwashers</option>
+                            <option value="Cooking">Cooking</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <select name="type" class="form-input" required>
+                                <option value="">Type</option>
+                                <option value="Large">Large</option>
+                                <option value="Small">Small</option>
+                                <option value="Front Load">Front Load</option>
+                                <option value="Split Acs">Split Acs</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="quantity" placeholder="Quantity" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" name="price" placeholder="Price" step="0.01" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea name="description" placeholder="Description" class="form-input" rows="4"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">Add Product</button>
+                    <button type="button" class="cancel-btn" onclick="toggleModal('addProductModal')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Product Modal -->
+    <div class="modal" id="editProductModal">
+        <div class="modal-content">
+            <h2>Edit Product</h2>
+            <form id="editProductForm" class="product-form">
+                <div class="image-upload">
+                    <button type="button" class="upload-btn">
+                        <i class="fas fa-upload"></i>
+                    </button>
+                    <span>Upload Image</span>
+                </div>
+                
+                <div class="form-fields">
+                    <div class="form-group">
+                        <input type="text" name="productName" placeholder="Product Name" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <select name="category" class="form-input" required>
+                            <option value="">Select Category</option>
+                            <option value="Refrigerators">Refrigerators</option>
+                            <option value="Washing Machines">Washing Machines</option>
+                            <option value="ACs">ACs</option>
+                            <option value="Dishwashers">Dishwashers</option>
+                            <option value="Cooking">Cooking</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <select name="type" class="form-input" required>
+                                <option value="">Type</option>
+                                <option value="Large">Large</option>
+                                <option value="Small">Small</option>
+                                <option value="Front Load">Front Load</option>
+                                <option value="Split Acs">Split Acs</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" name="quantity" placeholder="Quantity" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" name="price" placeholder="Price" step="0.01" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea name="description" placeholder="Description" class="form-input" rows="4"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">Update Product</button>
+                    <button type="button" class="cancel-btn" onclick="toggleModal('editProductModal')">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="deleteConfirmModal">
+        <div class="modal-content">
+            <h2>Delete Product</h2>
+            <p>Are you sure you want to delete this product?</p>
+            <div class="modal-actions">
+                <button id="confirmDelete" class="delete-btn">Delete</button>
+                <button class="cancel-btn" onclick="toggleModal('deleteConfirmModal')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../Homepage/sidebar.js"></script>
+    <script src="inventoryPage.js"></script>
+</body>
+</html>

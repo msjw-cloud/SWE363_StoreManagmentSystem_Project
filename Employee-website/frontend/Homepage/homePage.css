@@ -1,0 +1,1230 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  font-family: Arial, sans-serif;
+  background-color: #f5e6ba;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+  z-index: 1;
+  transition: all 0.3s ease;
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  transition: transform 0.3s ease, width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+  padding: 20px 10px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #333;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.sidebar.collapsed .logo span {
+  display: none;
+}
+
+.sidebar-toggle {
+  position: absolute;
+  right: -15px;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  background: #feb800;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+.sidebar-toggle:hover {
+  background: #e5a700;
+  transform: scale(1.1);
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #feb800;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.sidebar.collapsed .menu-item span {
+  display: none;
+}
+
+.sidebar.collapsed .menu-item {
+  justify-content: center;
+  padding: 12px 0;
+}
+
+.menu-item:hover {
+  background-color: rgba(254, 184, 0, 0.1);
+}
+
+.menu-item.active {
+  background-color: rgba(254, 184, 0, 0.1);
+}
+
+.menu-item i {
+  color: #feb800;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 240px;
+  flex: 1;
+  transition: margin-left 0.3s ease;
+  width: calc(100% - 240px);
+}
+
+.main-content.expanded {
+  margin-left: 70px;
+  width: calc(100% - 70px);
+}
+
+/* Header */
+header {
+  background: #feb800;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  height: 70px;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.user-info:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  background: #333;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+}
+
+.logout {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.logout:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Search Section */
+.search-section {
+  display: none;
+}
+
+/* Content Layout */
+.content {
+  padding: 30px;
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: 20px;
+  height: calc(100vh - 80px);
+  overflow: auto;
+}
+
+/* Home Section */
+.home {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+/* Updated Widget Styles */
+.widgets-container {
+  position: relative;
+  padding: 10px 55px;
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.widgets {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 5px;
+  position: relative;
+  z-index: 2;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.widgets::-webkit-scrollbar {
+  display: none;
+}
+
+.widget {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  height: 120px;
+  position: relative;
+  min-width: 200px;
+  max-width: 200px;
+  cursor: pointer;
+  flex: 1;
+  z-index: 2;
+}
+
+.widget:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.widget-content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.widget-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  width: 100%;
+}
+
+.widget-center i {
+  font-size: 24px;
+  color: #feb800;
+}
+
+.widget-title {
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+}
+
+.widget-subtitle {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Add these new styles for widget navigation */
+.widget[onclick] {
+  position: relative;
+}
+
+.widget[onclick]::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+.widget[onclick]:hover::after {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-dots {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+  pointer-events: none; /* Add this to prevent menu dots from interfering with navigation */
+  z-index: 2;
+}
+
+.menu-dots:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.avatars {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  justify-content: center;
+}
+
+.avatars .avatar {
+  width: 25px;
+  height: 25px;
+  margin-right: -8px;
+  border: 2px solid white;
+  font-size: 11px;
+}
+
+.avatars .avatar:last-child {
+  background: #feb800;
+  margin-right: 0;
+}
+
+/* Tasks Section */
+.tasks {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  grid-column: 1;
+  grid-row: 2;
+  min-width: 0;
+}
+
+/* Header Styling */
+.tasks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.tasks-header h2 {
+  font-size: 20px;
+  color: #333;
+  margin: 0;
+}
+
+.view-all {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #feb800;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.view-all:hover {
+  background-color: rgba(254, 184, 0, 0.1);
+}
+
+/* Tasks Container */
+.tasks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Category Styling */
+.task-category {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.category-header i {
+  color: #feb800;
+  font-size: 18px;
+}
+
+/* Task List */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Task Items */
+.task-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.task-item:hover {
+  background-color: #f8f8f8;
+}
+
+/* Checkbox Styling */
+.task-checkbox-wrapper {
+  padding-top: 2px;
+}
+
+.task-checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  position: relative;
+  margin: 0;
+}
+
+.task-checkbox:checked {
+  background-color: #feb800;
+  border-color: #feb800;
+}
+
+.task-checkbox:checked::after {
+  content: '✓';
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+}
+
+/* Task Content */
+.task-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-main h3 {
+  font-size: 15px;
+  color: #333;
+  margin: 0 0 4px 0;
+}
+
+.task-main p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+/* Priority Tags */
+.task-tag {
+  align-self: flex-start;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.task-tag.high {
+  background: rgba(255, 99, 71, 0.1);
+  color: tomato;
+}
+
+.task-tag.medium {
+  background: rgba(255, 165, 0, 0.1);
+  color: orange;
+}
+
+/* Delivery Tasks */
+.delivery-task {
+  background: #f8f8f8;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.delivery-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+  color: #feb800;
+  font-size: 14px;
+}
+
+.delivery-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.delivery-main h3 {
+  font-size: 15px;
+  color: #333;
+  margin: 0 0 4px 0;
+}
+
+.delivery-main p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.shipping-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #feb800;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.shipping-btn:hover {
+  background: #e5a600;
+}
+
+/* Completed Task States */
+.task-item.completed {
+  opacity: 0.7;
+}
+
+.task-item.completed .task-main h3 {
+  text-decoration: line-through;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .tasks {
+      padding: 20px;
+  }
+  
+  .delivery-content {
+      flex-direction: column;
+      gap: 12px;
+  }
+  
+  .shipping-btn {
+      width: 100%;
+      justify-content: center;
+  }
+}
+
+/* Purchases Section */
+.purchases {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  height: 100%;
+  overflow-y: auto;
+  min-width: 300px;
+}
+
+.purchase-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.purchase-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.3s;
+  min-width: 0;
+}
+
+.purchase-item:hover {
+  background-color: rgba(254, 184, 0, 0.05);
+}
+
+.purchase-icon {
+  width: 40px;
+  height: 40px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  transition: all 0.3s ease;
+}
+
+.purchase-item:hover .purchase-icon {
+  background-color: #feb800;
+  color: white;
+}
+
+.purchase-content {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.purchase-content h3 {
+  font-size: 16px;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.purchase-content p {
+  color: #666;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.time {
+  color: #666;
+  font-size: 14px;
+}
+
+h2 {
+  color: #333;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+/* Add tooltip for collapsed state */
+.sidebar.collapsed .menu-item {
+  position: relative;
+}
+
+.sidebar.collapsed .menu-item:hover::after {
+  content: attr(data-title);
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-left: 10px;
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+/* Add these styles for the scroll indicators */
+.scroll-indicator {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  color: #feb800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 1;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-left {
+  left: 10px;
+}
+
+.scroll-right {
+  right: 10px;
+}
+
+.scroll-indicator.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.scroll-indicator:hover {
+  background: #feb800;
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Dynamic padding based on scroll position */
+.widgets-container[data-can-scroll="right"] .widgets {
+  padding-right: 55px;
+}
+
+.widgets-container[data-can-scroll="left"] .widgets {
+  padding-left: 55px;
+}
+
+.widgets-container[data-can-scroll="both"] .widgets {
+  padding-left: 55px;
+  padding-right: 55px;
+}
+
+/* When both arrows are hidden */
+.widgets-container .scroll-indicator.hidden ~ .widgets {
+  padding: 10px 0;
+}
+
+/* Add these responsive styles to your existing homePage.css */
+
+/* Tablet and Mobile Common Styles */
+@media screen and (max-width: 1024px) {
+    /* Sidebar default state */
+    .sidebar {
+        width: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .sidebar-toggle {
+        left: 0;
+        background: #feb800;
+        width: 35px;
+        height: 35px;
+        z-index: 1000;
+    }
+
+    .sidebar.expanded {
+        width: 50%;
+        padding: 20px;
+        position: fixed;
+        z-index: 999;
+    }
+
+    /* Main content adjustments */
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    /* Content grid layout change */
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        height: auto;
+    }
+
+    /* Widgets adjustments */
+    .widgets-container {
+        padding: 10px 0;
+    }
+
+    .widgets {
+        flex-direction: column;
+        gap: 15px;
+        overflow: visible;
+    }
+
+    .widget {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+    }
+
+    /* Tasks and Purchases sections */
+    .home, .tasks, .purchases {
+        width: 100%;
+        grid-column: auto;
+    }
+}
+
+/* Mobile Specific Styles */
+@media screen and (max-width: 768px) {
+    /* Header adjustments */
+    header {
+        padding: 10px 15px;
+    }
+
+    .user-info {
+        gap: 8px;
+    }
+
+    /* Sidebar expanded state */
+    .sidebar.expanded {
+        width: 80%;
+    }
+
+    /* Content padding */
+    .content {
+        padding: 15px;
+    }
+
+    /* Widget adjustments */
+    .widget {
+        height: 100px;
+        padding: 15px;
+    }
+
+    .widget-title {
+        font-size: 14px;
+    }
+
+    /* Tasks and Purchases sections */
+    .tasks-header, .purchase-item {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .view-all {
+        align-self: flex-start;
+    }
+
+    .purchase-icon {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Small Mobile Styles */
+@media screen and (max-width: 480px) {
+    /* Further refinements for very small screens */
+    .sidebar.expanded {
+        width: 100%;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    .widget {
+        height: 90px;
+    }
+
+    .task-item, .purchase-item {
+        padding: 12px;
+    }
+}
+
+/* Update the sidebar styles for mobile */
+@media screen and (max-width: 1024px) {
+    .sidebar {
+        background: white;
+        width: 280px;
+        height: 100vh;
+        position: fixed;
+        left: -280px;
+        top: 0;
+        z-index: 1001;
+        padding: 20px;
+        transition: transform 0.3s ease;
+        box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .sidebar.expanded {
+        transform: translateX(280px);
+    }
+
+    .sidebar .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #333;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 10px;
+    }
+
+    .sidebar nav {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .menu-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #feb800;
+        text-decoration: none;
+        padding: 12px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .menu-item:hover {
+        background-color: rgba(254, 184, 0, 0.1);
+    }
+
+    .menu-item.active {
+        background-color: rgba(254, 184, 0, 0.1);
+    }
+
+    .menu-item span {
+        display: block !important;
+    }
+}
+
+/* Update the purchases section for mobile */
+@media screen and (max-width: 768px) {
+    .content {
+        padding: 15px;
+        height: auto;
+        overflow: visible;
+    }
+
+    .purchases {
+        grid-column: 1;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .purchase-item {
+        flex-direction: row;
+        align-items: center;
+        padding: 12px;
+    }
+
+    .purchase-icon {
+        width: 35px;
+        height: 35px;
+        min-width: 35px;
+    }
+
+    .purchase-content {
+        flex: 1;
+        min-width: 0;
+        margin: 0 10px;
+    }
+
+    .time {
+        min-width: 70px;
+        text-align: right;
+    }
+
+    .purchase-content h3 {
+        font-size: 14px;
+        margin-bottom: 2px;
+    }
+
+    .purchase-content p {
+        font-size: 12px;
+    }
+}
+
+/* Add overlay for when sidebar is expanded */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+@media screen and (max-width: 1024px) {
+    .sidebar-overlay.active {
+        display: block;
+    }
+}
+
+/* Add these styles for mobile toggle button */
+.sidebar-toggle.mobile-toggle {
+    position: static;
+    margin-right: 15px;
+    background: none;
+    color: white;
+    box-shadow: none;
+    width: 35px;
+    height: 35px;
+}
+
+.sidebar-toggle.mobile-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+@media screen and (max-width: 1024px) {
+    .left-section {
+        display: flex;
+        align-items: center;
+    }
+
+    .sidebar-toggle.mobile-toggle {
+        display: flex;
+        margin-right: 15px;
+    }
+}
+
+/* Update the sidebar and overlay styles */
+.sidebar {
+    transition: transform 0.3s ease, width 0.3s ease;
+}
+
+.sidebar.mobile {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    transform: translateX(-100%);
+    z-index: 1001;
+    background: white;
+    width: 280px;
+}
+
+.sidebar.mobile.expanded {
+    transform: translateX(0);
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Update/Add these header styles */
+@media screen and (max-width: 768px) {
+    /* Fixed header for mobile */
+    header {
+        position: fixed;
+        top: 0;
+        left: 70px; /* Account for collapsed sidebar width */
+        right: 0;
+        z-index: 100;
+    }
+
+    /* Adjust main content to account for fixed header */
+    .main-content {
+        padding-top: 70px; /* Height of header */
+    }
+
+    /* When sidebar is expanded */
+    .main-content.expanded {
+        margin-left: 70px;
+    }
+
+    /* Content area adjustments */
+    .content {
+        height: calc(100vh - 70px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* Small screen specific adjustments */
+@media screen and (max-width: 480px) {
+    header {
+        left: 0; /* Full width on very small screens */
+    }
+
+    .main-content.expanded {
+        margin-left: 0;
+    }
+}
+
+/* Maintain desktop design */
+@media screen and (min-width: 769px) {
+    header {
+        position: relative;
+    }
+
+    .main-content {
+        padding-top: 0;
+    }
+}
+
+/* Update/Add these mobile styles */
+@media screen and (max-width: 768px) {
+    .content {
+        padding: 15px;
+        height: auto;
+        min-height: calc(100vh - 70px);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .home {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .tasks {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .purchases {
+        width: 100%;
+        height: auto;
+        min-height: 300px; /* Minimum height for visibility */
+        margin-bottom: 20px;
+        grid-column: 1;
+        padding: 20px;
+    }
+
+    .purchase-list {
+        max-height: 400px; /* Maximum height before scrolling */
+        overflow-y: auto;
+    }
+
+    .purchase-item {
+        padding: 12px;
+        margin-bottom: 10px;
+    }
+
+    .purchase-icon {
+        width: 35px;
+        height: 35px;
+        min-width: 35px;
+    }
+
+    .purchase-content {
+        flex: 1;
+        min-width: 0;
+        margin: 0 10px;
+    }
+
+    .time {
+        min-width: 70px;
+        text-align: right;
+    }
+}
+
+/* Update/Add these mobile sidebar toggle styles */
+@media screen and (max-width: 1024px) {
+    .sidebar-toggle.mobile-toggle {
+        width: 40px;
+        height: 40px;
+        margin-right: 15px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar-toggle.mobile-toggle:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .sidebar-toggle.mobile-toggle:active {
+        transform: translateY(1px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar-toggle.mobile-toggle i {
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar.expanded + .main-content .sidebar-toggle.mobile-toggle i {
+        transform: rotate(180deg);
+    }
+}

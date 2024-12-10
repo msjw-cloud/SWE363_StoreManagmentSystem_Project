@@ -1,0 +1,171 @@
+/* Keep the base styles import */
+@import url('../HomePage/homePage.css');
+
+/* Updated Profile specific styles */
+.content {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px); /* Subtract header height */
+}
+
+.profile-card {
+    background: white;
+    border-radius: 15px;
+    padding: 40px 60px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 1000px;  /* Increased from 800px */
+    margin: 0 auto;
+}
+
+.profile-card h1 {
+    color: #feb800;
+    font-size: 32px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.profile-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);  /* Two columns */
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.profile-picture {
+    grid-column: 1 / -1;  /* Span both columns */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.avatar.large {
+    width: 150px;  /* Increased size */
+    height: 150px;
+    font-size: 48px;
+    background: #333;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.upload-btn {
+    color: #feb800;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: underline;
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+}
+
+.upload-btn:hover {
+    color: #e5a700;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group label {
+    color: #666;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.form-group input {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #f8f8f8;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #feb800;
+    box-shadow: 0 0 0 3px rgba(254, 184, 0, 0.1);
+    background: white;
+}
+
+.availability-options {
+    display: flex;
+    gap: 30px;
+    padding: 10px 0;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.radio-label:hover {
+    background-color: rgba(254, 184, 0, 0.1);
+}
+
+.radio-label input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #feb800;
+}
+
+.radio-label span {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Make update button span both columns */
+.update-btn {
+    grid-column: 1 / -1;
+    background: #feb800;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    width: 50%;  /* Make button width 50% */
+    justify-self: center;  /* Center the button */
+}
+
+.update-btn:hover {
+    background: #e5a700;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(254, 184, 0, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-card {
+        padding: 30px;
+        width: 95%;
+    }
+
+    .profile-form {
+        grid-template-columns: 1fr;  /* Single column on mobile */
+    }
+
+    .update-btn {
+        width: 100%;  /* Full width on mobile */
+    }
+}

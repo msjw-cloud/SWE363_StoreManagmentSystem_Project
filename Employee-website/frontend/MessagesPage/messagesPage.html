@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - StoreFlow</title>
+    <link rel="stylesheet" href="messagesPage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-store"></i>
+            <span>StoreFlow</span>
+        </div>
+        <button class="sidebar-toggle" aria-label="Toggle sidebar">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <nav>
+            <a href="../HomePage/homePage.html" class="menu-item">
+                <i class="fas fa-home"></i>
+                <span>Homepage</span>
+            </a>
+            <a href="../InventoryPage/inventoryPage.html" class="menu-item">
+                <i class="fas fa-boxes"></i>
+                <span>Inventory</span>
+            </a>
+            <a href="../PurchasePage/purchasePage.html" class="menu-item">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Purchase</span>
+            </a>
+            <a href="../ContactPage/contactPage.html" class="menu-item">
+                <i class="fas fa-address-book"></i>
+                <span>Contact</span>
+            </a>
+            <a href="../TasksPage/tasksPage.html" class="menu-item">
+                <i class="fas fa-tasks"></i>
+                <span>Tasks</span>
+            </a>
+            <a href="../ReportPage/reportPage.html" class="menu-item">
+                <i class="fas fa-flag"></i>
+                <span>Report</span>
+            </a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header>
+            <div class="left-section">
+                <div class="user-info" onclick="window.location.href='../ProfilePage/profilePage.html'">
+                    <div class="avatar" id="userAvatar">F</div>
+                    <div class="user-details">
+                        <div class="name">Faisal</div>
+                    </div>
+                </div>
+                <button class="logout" onclick="window.location.href='../LoginPage/logPage.html'">
+                    LogOut <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+            <div class="search-section">
+                <div class="search-container">
+                    <input type="text" placeholder="Search messages...">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="messages-container">
+                <h1>Messages</h1>
+                
+                <div class="messages-tabs">
+                    <button class="tab-btn active" data-tab="inbox">
+                        <i class="fas fa-inbox"></i>
+                        Inbox
+                    </button>
+                    <button class="tab-btn" data-tab="sent">
+                        <i class="fas fa-paper-plane"></i>
+                        Sent
+                    </button>
+                </div>
+
+                <div class="messages-list" data-type="inbox">
+                    <div class="message-item unread">
+                        <div class="message-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="message-name">John Doe</span>
+                                <span class="message-date">11/1</span>
+                            </div>
+                            <div class="message-details">
+                                <span class="message-from">From: john@example.com</span>
+                                <span class="message-subject">New Inventory Update</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message-item">
+                        <div class="message-icon">
+                            <i class="fas fa-envelope-open"></i>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="message-name">Sarah Smith</span>
+                                <span class="message-date">10/30</span>
+                            </div>
+                            <div class="message-details">
+                                <span class="message-from">From: sarah@example.com</span>
+                                <span class="message-subject">Monthly Report Summary</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message-item">
+                        <div class="message-icon">
+                            <i class="fas fa-envelope-open"></i>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="message-name">Mike Johnson</span>
+                                <span class="message-date">10/28</span>
+                            </div>
+                            <div class="message-details">
+                                <span class="message-from">From: mike@example.com</span>
+                                <span class="message-subject">Task Assignment</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="messages-list" data-type="sent" style="display: none;">
+                    <div class="message-item">
+                        <div class="message-icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="message-name">Emily Brown</span>
+                                <span class="message-date">Today</span>
+                            </div>
+                            <div class="message-details">
+                                <span class="message-to">To: emily@example.com</span>
+                                <span class="message-subject">Re: Project Timeline</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="message-item">
+                        <div class="message-icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <div class="message-content">
+                            <div class="message-header">
+                                <span class="message-name">David Wilson</span>
+                                <span class="message-date">10/21</span>
+                            </div>
+                            <div class="message-details">
+                                <span class="message-to">To: david@example.com</span>
+                                <span class="message-subject">Purchase Order #123</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="compose-btn" onclick="toggleComposeModal()">
+                <i class="fas fa-plus"></i>
+                New Message
+            </button>
+        </div>
+
+        <div class="message-detail-modal" id="messageDetailModal">
+            <div class="message-detail-content">
+                <div class="message-detail-header">
+                    <h2>Message Details</h2>
+                    <button class="close-btn" onclick="closeMessageDetail()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="message-detail-body">
+                    <div class="message-info">
+                        <div class="message-meta">
+                            <span id="messageDate" class="date">Date</span>
+                            <span id="messageStatus" class="status">Status</span>
+                        </div>
+                        <div class="message-from">From: <span id="messageSender">Sender Name</span></div>
+                        <div class="message-subject">Subject: <span id="messageSubject">Message Subject</span></div>
+                    </div>
+                    <div class="message-content-text" id="messageContent">
+                        Message content goes here...
+                    </div>
+                    <div class="message-attachments" id="messageAttachments">
+                        <!-- Attachments will be added here dynamically -->
+                    </div>
+                </div>
+                <div class="message-detail-actions">
+                    <button class="reply-btn">
+                        <i class="fas fa-reply"></i>
+                        Reply
+                    </button>
+                    <button class="forward-btn">
+                        <i class="fas fa-share"></i>
+                        Forward
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="compose-modal" id="composeModal">
+            <div class="compose-content">
+                <h2>New Message</h2>
+                <div class="compose-form">
+                    <div class="sender-info">
+                        <div class="avatar">F</div>
+                        <span class="employee-name">Faisal</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="To" class="compose-input">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject" class="compose-input">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Write your message here..." rows="6" class="compose-input"></textarea>
+                    </div>
+                    <div class="attachment-buttons">
+                        <button class="attach-btn">
+                            <i class="fas fa-paperclip"></i>
+                        </button>
+                        <button class="attach-btn">
+                            <i class="fas fa-image"></i>
+                        </button>
+                    </div>
+                    <div class="compose-actions">
+                        <button class="send-btn">SEND</button>
+                        <button class="cancel-btn" onclick="toggleComposeModal()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        window.onload = function() {
+            const storedName = sessionStorage.getItem('userName');
+            if (storedName) {
+                document.querySelector('.user-info .name').textContent = storedName;
+                const avatarElement = document.querySelector('#userAvatar');
+                if (avatarElement) {
+                    avatarElement.textContent = storedName.charAt(0).toUpperCase();
+                }
+                document.querySelector('.employee-name').textContent = storedName;
+            }
+        }
+
+        // Tab switching functionality
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const type = button.getAttribute('data-tab');
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Hide all message lists
+                document.querySelectorAll('.messages-list').forEach(list => list.style.display = 'none');
+                // Show the selected list
+                document.querySelector(`.messages-list[data-type="${type}"]`).style.display = 'flex';
+            });
+        });
+
+        // Message detail functionality
+        document.querySelectorAll('.message-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const messageData = {
+                    date: item.querySelector('.message-date').textContent,
+                    sender: item.querySelector('.message-name').textContent,
+                    subject: item.querySelector('.message-subject').textContent,
+                    content: "This is a sample message content. In a real application, this would be the actual message content from your database. The content would include the full message body, formatting, and any other relevant information.",
+                    status: item.classList.contains('unread') ? 'Unread' : 'Read'
+                };
+                showMessageDetail(messageData);
+                
+                // Mark message as read when opened
+                if (item.classList.contains('unread')) {
+                    item.classList.remove('unread');
+                    item.querySelector('.message-icon i').classList.replace('fa-envelope', 'fa-envelope-open');
+                }
+            });
+        });
+
+        function showMessageDetail(messageData) {
+            const modal = document.getElementById('messageDetailModal');
+            
+            // Update modal content with message data
+            document.getElementById('messageDate').textContent = messageData.date;
+            document.getElementById('messageStatus').textContent = messageData.status;
+            document.getElementById('messageSender').textContent = messageData.sender;
+            document.getElementById('messageSubject').textContent = messageData.subject;
+            document.getElementById('messageContent').textContent = messageData.content;
+            
+            modal.style.display = 'flex';
+        }
+
+        function closeMessageDetail() {
+            const modal = document.getElementById('messageDetailModal');
+            modal.style.display = 'none';
+        }
+
+        // Compose modal functionality
+        function toggleComposeModal() {
+            const modal = document.getElementById('composeModal');
+            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const composeModal = document.getElementById('composeModal');
+            const messageDetailModal = document.getElementById('messageDetailModal');
+            
+            if (event.target === composeModal) {
+                composeModal.style.display = 'none';
+            }
+            if (event.target === messageDetailModal) {
+                messageDetailModal.style.display = 'none';
+            }
+        }
+    </script>
+    <script src="../Homepage/sidebar.js"></script>
+</body>
+</html>
