@@ -8,6 +8,7 @@ const employeeRoutes = require('./routes/employeeRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const calendarRoutes = require('./routes/calendarRoutes');
 const messageRoutes = require('./routes/messageRoutes');
+const taskRoutes = require('./routes/taskRoutes');
 
 
 const app = express();
@@ -39,6 +40,7 @@ app.use('/api/employees', employeeRoutes);
 app.use('/api/orders', orderRoutes);
 app.use('/api/calendar/events', calendarRoutes);
 app.use('/api/messages', messageRoutes);
+app.use('/api/tasks', taskRoutes);
 
 // Test route
 app.get('/api/test', (req, res) => {
