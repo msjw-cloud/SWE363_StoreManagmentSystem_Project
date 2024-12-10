@@ -5,12 +5,12 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 
-// Register new user
-router.post('/register', async (req, res) => {
+// Customer Registration
+router.post('/customer/register', async (req, res) => {
     try {
-        const { name, email, password, role } = req.body;
+        const { name, email, password, phoneNumber, address } = req.body;
 
-        // Check if user already exists
+        // Check if customer already exists
         let user = await User.findOne({ email });
         if (user) {
             return res.status(400).json({ message: 'User already exists' });
@@ -20,12 +20,14 @@ router.post('/register', async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        // Create new user
+        // Create new customer
         user = new User({
             name,
             email,
             password: hashedPassword,
-            role
+            role: 'customer',
+            phoneNumber,
+            addresses: [address]
         });
 
         await user.save();
@@ -44,7 +46,7 @@ router.post('/register', async (req, res) => {
                 name: user.name,
                 email: user.email,
                 role: user.role,
-                profileImage: user.profileImage
+                phoneNumber: user.phoneNumber
             }
         });
     } catch (error) {
@@ -53,13 +55,13 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// Login user
-router.post('/login', async (req, res) => {
+// Customer Login
+router.post('/customer/login', async (req, res) => {
     try {
         const { email, password } = req.body;
 
         // Check if user exists
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ email, role: 'customer' });
         if (!user) {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
@@ -84,7 +86,7 @@ router.post('/login', async (req, res) => {
                 name: user.name,
                 email: user.email,
                 role: user.role,
-                profileImage: user.profileImage
+                phoneNumber: user.phoneNumber
             }
         });
     } catch (error) {
@@ -93,28 +95,67 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// Get current user profile
-router.get('/profile', async (req, res) => {
+// Get customer profile
+router.get('/customer/profile', async (req, res) => {
     try {
-        // Get token from header
         const token = req.header('Authorization')?.replace('Bearer ', '');
         if (!token) {
             return res.status(401).json({ message: 'No token, authorization denied' });
         }
 
-        // Verify token
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         
-        // Get user
-        const user = await User.findById(decoded.userId).select('-password');
+        const user = await User.findOne({ _id: decoded.userId, role: 'customer' })
+            .select('-password')
+            .populate('orderHistory');
+            
         if (!user) {
-            return res.status(404).json({ message: 'User not found' });
+            return res.status(404).json({ message: 'Customer not found' });
         }
 
         res.json(user);
     } catch (error) {
         console.error('Profile error:', error);
         res.status(401).json({ message: 'Token is not valid' });
+    }
+});
+
+// Update customer profile
+router.put('/customer/profile', async (req, res) => {
+    try {
+        const token = req.header('Authorization')?.replace('Bearer ', '');
+        if (!token) {
+            return res.status(401).json({ message: 'No token, authorization denied' });
+        }
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        
+        const user = await User.findOne({ _id: decoded.userId, role: 'customer' });
+        if (!user) {
+            return res.status(404).json({ message: 'Customer not found' });
+        }
+
+        const { name, phoneNumber, address } = req.body;
+
+        if (name) user.name = name;
+        if (phoneNumber) user.phoneNumber = phoneNumber;
+        if (address) user.addresses.push(address);
+
+        await user.save();
+
+        res.json({
+            message: 'Profile updated successfully',
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email,
+                phoneNumber: user.phoneNumber,
+                addresses: user.addresses
+            }
+        });
+    } catch (error) {
+        console.error('Update profile error:', error);
+        res.status(500).json({ message: 'Server error' });
     }
 });
 
