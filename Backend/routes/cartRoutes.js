@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Cart = require('../models/cartModel');
+const Category = require('../models/productModel'); // Add this line to directly import the Category model
 const jwt = require('jsonwebtoken');
 
-// Middleware to verify customer token
+// Middleware stays the same
 const authenticateCustomer = async (req, res, next) => {
     try {
         const token = req.header('Authorization')?.replace('Bearer ', '');
@@ -28,7 +29,7 @@ const authenticateCustomer = async (req, res, next) => {
 router.get('/', authenticateCustomer, async (req, res) => {
     try {
         let cart = await Cart.findOne({ customer: req.user.userId })
-                            .populate('items.product', 'name image price');
+                            .populate('items.product');
         
         if (!cart) {
             cart = new Cart({ customer: req.user.userId, items: [] });
@@ -42,7 +43,7 @@ router.get('/', authenticateCustomer, async (req, res) => {
     }
 });
 
-// Add item to cart
+// Add item to cart - Modified to use Category model directly
 router.post('/items', authenticateCustomer, async (req, res) => {
     try {
         const { productId, quantity } = req.body;
@@ -55,14 +56,14 @@ router.post('/items', authenticateCustomer, async (req, res) => {
 
         // Check if product already exists in cart
         const existingItem = cart.items.find(item => 
-            item.product.toString() === productId
+            item.product?.toString() === productId
         );
 
         if (existingItem) {
             existingItem.quantity += quantity;
         } else {
-            const Product = mongoose.model('Category');
-            const product = await Product.findById(productId);
+            // Use Category model directly
+            const product = await Category.findById(productId);
             
             if (!product) {
                 return res.status(404).json({ message: 'Product not found' });
@@ -71,7 +72,7 @@ router.post('/items', authenticateCustomer, async (req, res) => {
             cart.items.push({
                 product: productId,
                 quantity,
-                price: product.price,
+                price: product.price || 0,
                 productName: product.name,
                 productImage: product.image
             });
@@ -85,6 +86,7 @@ router.post('/items', authenticateCustomer, async (req, res) => {
     }
 });
 
+// Rest of the routes stay the same
 // Update cart item quantity
 router.put('/items/:itemId', authenticateCustomer, async (req, res) => {
     try {
