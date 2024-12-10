@@ -10,6 +10,7 @@ const calendarRoutes = require('./routes/calendarRoutes');
 const messageRoutes = require('./routes/messageRoutes');
 const taskRoutes = require('./routes/taskRoutes');
 const reportRoutes = require('./routes/reportRoutes');
+const cartRoutes = require('./routes/cartRoutes');
 
 
 const app = express();
@@ -43,6 +44,7 @@ app.use('/api/calendar/events', calendarRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/reports', reportRoutes);
+app.use('/api/cart', cartRoutes);
 
 // Test route
 app.get('/api/test', (req, res) => {
