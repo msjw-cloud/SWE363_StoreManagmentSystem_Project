@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
 const Cart = require('../models/cartModel');
 const jwt = require('jsonwebtoken');
 
@@ -36,6 +37,7 @@ router.get('/', authenticateCustomer, async (req, res) => {
         
         res.json(cart);
     } catch (error) {
+        console.error('Get cart error:', error);
         res.status(500).json({ message: error.message });
     }
 });
@@ -59,7 +61,9 @@ router.post('/items', authenticateCustomer, async (req, res) => {
         if (existingItem) {
             existingItem.quantity += quantity;
         } else {
-            const product = await mongoose.model('Category').findById(productId);
+            const Product = mongoose.model('Category');
+            const product = await Product.findById(productId);
+            
             if (!product) {
                 return res.status(404).json({ message: 'Product not found' });
             }
@@ -76,6 +80,7 @@ router.post('/items', authenticateCustomer, async (req, res) => {
         await cart.save();
         res.json(cart);
     } catch (error) {
+        console.error('Add to cart error:', error);
         res.status(500).json({ message: error.message });
     }
 });
@@ -103,6 +108,7 @@ router.put('/items/:itemId', authenticateCustomer, async (req, res) => {
         await cart.save();
         res.json(cart);
     } catch (error) {
+        console.error('Update cart error:', error);
         res.status(500).json({ message: error.message });
     }
 });
@@ -120,6 +126,7 @@ router.delete('/items/:itemId', authenticateCustomer, async (req, res) => {
         
         res.json(cart);
     } catch (error) {
+        console.error('Remove from cart error:', error);
         res.status(500).json({ message: error.message });
     }
 });
@@ -135,6 +142,7 @@ router.delete('/', authenticateCustomer, async (req, res) => {
         
         res.json({ message: 'Cart cleared successfully' });
     } catch (error) {
+        console.error('Clear cart error:', error);
         res.status(500).json({ message: error.message });
     }
 });

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cartItemSchema = new mongoose.Schema({
     product: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Category',  // References the existing product model from your colleagues
+        ref: 'Category',
         required: true
     },
     quantity: {
@@ -15,7 +15,6 @@ const cartItemSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    // Additional product details cached at the time of adding to cart
     productName: String,
     productImage: String
 });
@@ -35,7 +34,6 @@ const cartSchema = new mongoose.Schema({
     timestamps: true
 });
 
-// Pre-save middleware to calculate total amount
 cartSchema.pre('save', function(next) {
     this.totalAmount = this.items.reduce((total, item) => {
         return total + (item.price * item.quantity);
